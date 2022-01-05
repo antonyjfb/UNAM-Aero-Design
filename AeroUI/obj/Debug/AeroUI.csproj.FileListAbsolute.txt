@@ -1,0 +1,15 @@
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\bin\Debug\AeroUI.exe.config
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\bin\Debug\AeroUI.exe
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\bin\Debug\AeroUI.pdb
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.AssemblyReference.cache
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\MainWindow.g.cs
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\App.g.cs
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI_MarkupCompile.cache
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI_MarkupCompile.lref
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\MainWindow.baml
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.g.resources
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.Properties.Resources.resources
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.GenerateResource.cache
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.CoreCompileInputs.cache
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.exe
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.pdb
