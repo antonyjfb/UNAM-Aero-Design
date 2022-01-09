@@ -7,11 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="94,220,0,0" TextWrapping="Wrap" Text="Sólo soy texto unu" VerticalAlignment="Top" Width="120"/>
-        <Label Content="No" HorizontalAlignment="Left" Margin="345,238,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="94,210,0,0" TextWrapping="Wrap" Text="Adios Mundo" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="225,132,0,0" TextWrapping="Wrap" Text="Entiendo" VerticalAlignment="Top" Width="120"/>
-        
+        <TextBox HorizontalAlignment="Left" Margin="94,220,0,0" TextWrapping="Wrap" Text="Sólo soy texto uwu" VerticalAlignment="Top" Width="120"/>
+
 
     </Grid>
 </Window>
