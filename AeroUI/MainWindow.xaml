@@ -104,7 +104,7 @@
 
                 <!--PANEL HOME-->
                 <StackPanel x:Name="PnHome" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735" Visibility="Hidden">
-                    <TextBlock Margin="250,130,300,50" Foreground="Blue" FontSize="30" Text="PANEL HOME"/>
+                    <TextBlock Margin="250,130,300,50" Foreground="Blue" FontSize="30" Text="PANEL HOME2"/>
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL HOME-->
 
 
