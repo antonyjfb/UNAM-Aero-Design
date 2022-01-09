@@ -13,3 +13,4 @@ C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.Genera
 C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.CoreCompileInputs.cache
 C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.exe
 C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.pdb
+C:\Users\Antony\Documents\UNAM Aero Design\AeroUI\obj\Debug\AeroUI.csproj.SuggestedBindingRedirects.cache
