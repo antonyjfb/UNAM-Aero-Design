@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="94,220,0,0" TextWrapping="Wrap" Text="Sólo soy texto uwu" VerticalAlignment="Top" Width="120"/>
-
+        <Label>Hola</Label>
+        <Label>Hola 2</Label>
 
     </Grid>
 </Window>
