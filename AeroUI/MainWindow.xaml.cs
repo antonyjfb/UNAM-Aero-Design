@@ -53,6 +53,11 @@ namespace AeroUI
                 DataLog log = new DataLog(device);
                 logUAV.Add(log);
                 Console.WriteLine(log.CSV_Line);
+
+                Application.Current.Dispatcher.Invoke(new Action(() =>
+                {
+                    Xpos_Label.Content = log.PosX;
+                }));
             }
             catch (Exception error)
             {

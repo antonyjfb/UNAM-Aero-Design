@@ -107,9 +107,9 @@
                     <TextBlock Margin="250,130,300,50" Foreground="Blue" FontSize="30" Text="PANEL HOME2"/>
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL HOME-->
 
-
-
-
+                    <Label Margin="250,200,300,50" Name="Xpos_Label" FontSize="40" Foreground="Red">
+                        <Bold>Loading data</Bold>
+                    </Label>
 
                 </StackPanel>
 
