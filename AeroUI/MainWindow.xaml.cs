@@ -74,6 +74,8 @@ namespace AeroUI
 
         private void actualizarValores(DataLog log)
         {
+            //Cada vez que se agregue un tipo de visualización compleja Ej: Gráfica
+            //se añadirá como una función Ej: ModificarGrafica(parametros)
             //Para obtener la información usar la sintaxis log.datoRequerido Ej: log.PosX devuelve la posición en X
             Xpos_Label.Content = log.PosX;
         }
