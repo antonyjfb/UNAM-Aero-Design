@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/AeroUI/.vs/AeroUI/v17/.suo
+*.suo
+*.exe
+*.pdb
