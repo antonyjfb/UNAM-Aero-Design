@@ -27,7 +27,7 @@ namespace AeroUI
     {
         private UAV device = new UAV();
         private List<DataLog> logUAV = new List<DataLog>();
-        private bool toogle=false;
+        private bool toogle = false;
 
 
         //private Thread threadUI;
