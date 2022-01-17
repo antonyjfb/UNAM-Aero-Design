@@ -16,7 +16,7 @@ void loop() {
       bool flujo = true;
       while (flujo)
       {
-        int dato = analogRead(A0);
+//        int dato = analogRead(A0);
 //        Serial.print("\x02");
 //        Serial.print(dato);
 //        Serial.print("\x03");
@@ -33,9 +33,9 @@ void loop() {
         Serial.print(",");
         Serial.print(6*sin(x*(3.14/180)));
         Serial.print(",");
-        Serial.print(millis());
-        Serial.print(",");
         Serial.print(7*sin(x*(3.14/180)));
+        Serial.print(",");
+        Serial.print(millis());
         x++;
         Serial.print("\x03");
         if(Serial.available()>0)

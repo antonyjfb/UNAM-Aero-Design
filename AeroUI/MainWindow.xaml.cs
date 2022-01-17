@@ -77,7 +77,7 @@ namespace AeroUI
             //Cada vez que se agregue un tipo de visualización compleja Ej: Gráfica
             //se añadirá como una función Ej: ModificarGrafica(parametros)
             //Para obtener la información usar la sintaxis log.datoRequerido Ej: log.PosX devuelve la posición en X
-            Xpos_Label.Content = log.PosX;
+            Xpos_Label.Content = log.Distancia;
         }
 
         private void Conexion_Click(object sender, RoutedEventArgs e)
@@ -277,6 +277,7 @@ namespace AeroUI
 
         private void LvSettings1_Selected(object sender, RoutedEventArgs e)
         {
+            CerrarConexion();
             Close();
         }
     }
