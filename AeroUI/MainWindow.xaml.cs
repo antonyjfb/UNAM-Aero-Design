@@ -26,9 +26,11 @@ namespace AeroUI
     public partial class MainWindow : Window
     {
         private UAV device = new UAV();
-        private Thread threadUI;
         private List<DataLog> logUAV = new List<DataLog>();
-        private bool toogle=false;
+        private bool toogle = false;
+
+
+        //private Thread threadUI;
 
         //Programa principal
         public MainWindow()
@@ -42,27 +44,38 @@ namespace AeroUI
             SearchPorts();
             device.NewDataPacketReceived += device_NewDataPacketReceived; //Declaracion evento que se ejecuta cada vez que se recibe un dato
             device.SetBaudRate(9600);
-            RealTimeUI_Setup();
+            //RealTimeUI_Setup();
         }
         //Código ejecutado cuando se recibe un nuevo dato
         private void device_NewDataPacketReceived(object sender, EventArgs e)
         {
             try
             {
-                UI_Update(device);
+                //UI_Update(device); COMENTADA HASTA NUEVO AVISO
                 DataLog log = new DataLog(device);
+
+                //Se agrega el nuevo dato recibido al registro completo de datos
                 logUAV.Add(log);
+
+                //Línea que contiene toda la información recopilada por los sensores
                 Console.WriteLine(log.CSV_Line);
 
                 Application.Current.Dispatcher.Invoke(new Action(() =>
                 {
-                    Xpos_Label.Content = log.PosX;
+                    //Dentro de esta función se actualizan todos los elementos visuales que requieran de información de los sensores
+                    actualizarValores(log);
                 }));
             }
             catch (Exception error)
             {
                 Console.WriteLine(error.Message);
             }
+        }
+
+        private void actualizarValores(DataLog log)
+        {
+            //Para obtener la información usar la sintaxis log.datoRequerido Ej: log.PosX devuelve la posición en X
+            Xpos_Label.Content = log.PosX;
         }
 
         private void Conexion_Click(object sender, RoutedEventArgs e)
@@ -84,9 +97,9 @@ namespace AeroUI
             try
             {
                 device.StopDataFlow();
-                threadUI.Abort();
+                //threadUI.Abort();
                 device.StopConnection();
-                threadUI.Abort();
+                //threadUI.Abort();
             }
             catch (Exception error)
             {
@@ -101,9 +114,12 @@ namespace AeroUI
                 string puerto = comboBox1.SelectedItem.ToString();
                 device.OpenConnection(puerto);
                 device.BeginDataFlow();
-                ThreadStart methodUI = new ThreadStart(UI_Thread);
-                threadUI = new Thread(methodUI);
-                threadUI.Start();
+
+                //Funciones comentadas hasta nuevo aviso
+
+                //ThreadStart methodUI = new ThreadStart(UI_Thread);
+                //threadUI = new Thread(methodUI);
+                //threadUI.Start();
             }
             catch (Exception error)
             {
@@ -125,8 +141,10 @@ namespace AeroUI
             }
         }
 
+        //COMENTADO HASTA NUEVO AVISO
+
         //Proceso en el hilo, independiente de la ejecución del resto del programa
-        private void RealTimeUI_Setup()
+        /*private void RealTimeUI_Setup()
         {
             Thread.Sleep(100);
         }
@@ -145,7 +163,7 @@ namespace AeroUI
         }
         private void ModifyChart(UAV Mobula)
         {
-            //Jeje
+            Xpos_Label.Content = Mobula.PosX;
         }
 
         private void UI_Thread()
@@ -157,7 +175,7 @@ namespace AeroUI
                 Thread.Sleep(100);
                 UI_Update(device);
             }
-        }
+        }*/
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -169,7 +187,7 @@ namespace AeroUI
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            device.StopConnection();
+            CerrarConexion();
             Environment.Exit(Environment.ExitCode);
         }
 
