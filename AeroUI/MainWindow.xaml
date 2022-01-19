@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         Topmost="True"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
         <!--//Toggle Button Style Templete-->
         <ImageBrush x:Key="tb_mouse_over"
@@ -103,14 +103,32 @@
                 </Grid.Background>
 
                 <!--PANEL HOME-->
-                <StackPanel x:Name="PnHome" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735" Visibility="Hidden">
-                    <TextBlock Margin="250,130,300,50" Foreground="Blue" FontSize="30" Text="PANEL HOME2"/>
+                <StackPanel x:Name="PnHome" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL HOME-->
+                    <!--GroupBox para PRIMARY AIRCRAFT DATA-->
+                    <GroupBox Header="Primary Aircraft Data" Height="170" Margin="0,-10,421,0" Foreground="White" FontSize="20">
+                        <Grid>
+                            <Label x:Name="lbl_Lat" Content="Lat [Deg]:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="87" FontSize="15" Foreground="White"/>
+                            <Label x:Name="lbl_Long" Content="Long [Deg]:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="15"/>
+                            <Label x:Name="lbl_Speed" Content="Speed [ft/s]:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" FontSize="15" Width="92" Foreground="White"/>
+                            <Label x:Name="lblLat" Content="Latitude" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" Width="76" Foreground="White" FontSize="15"/>
+                            <Label x:Name="lblLong" Content="Long" HorizontalAlignment="Left" Margin="102,40,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Width="76"/>
+                            <Label x:Name="lblSpeed" Content="Speed" HorizontalAlignment="Left" Margin="102,70,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="76"/>
+                            <Label x:Name="lbl_Alt" Content="Altitude [ft]:" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                            <Label x:Name="lblAlt" Content="Alt" HorizontalAlignment="Left" Margin="183,40,0,0" VerticalAlignment="Top" Height="55" Width="109" FontSize="40" Foreground="White"/>
+                        </Grid>
+                    </GroupBox>
 
-                    <Label Margin="250,200,300,50" Name="Xpos_Label" FontSize="40" Foreground="Red">
-                        <Bold>Loading data</Bold>
-                    </Label>
+                    <GroupBox x:Name="Record_Flight_Data" Height="120" Margin="0,0,421,0" Foreground="White" BorderBrush="#FF0F71AC" FontSize="20" Header="Record Flight Data">
+                        <Grid>
+                            <Label x:Name="lbl_RecTime" Content="Recording time:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
+                            <Label x:Name="lblRecTime" Content="RecTime" HorizontalAlignment="Left" Margin="166,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="30" RenderTransformOrigin="0.586,-0.588"/>
+                            <Button x:Name="btnRecord" Content="Record" HorizontalAlignment="Left" Margin="32,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="Save_Click" Height="31
+                                    " Width="80" FontSize="15" BorderBrush="#FF98CF79" Background="#FF89D690"/>
+                            <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="166,45,0,0" VerticalAlignment="Top" Width="80" Height="31" Background="#FF7DD385" FontSize="15" Click="btnStop_Click"/>
+                        </Grid>
 
+                    </GroupBox>
                 </StackPanel>
 
                 <!--PANEL TAKE OFF-->
@@ -148,18 +166,21 @@
                 </StackPanel>
 
                 <!--PANEL Settings -->
-                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735">
-                    <TextBlock Margin="250,130,250,50" Foreground="Crimson" FontSize="30" Text="PANEL Settings"/>
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Settings-->
-                    <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="Conexion" Content="Abrir/Cerrar Conexión" HorizontalAlignment="Left" Margin="337,95,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="Conexion_Click"/>
-                    <Button x:Name="Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="250,5,0,0" VerticalAlignment="Top" Click="Buscar_Click"/>
-                    <Button Name="Save" Content="Guardar" HorizontalAlignment="Left" Margin="697,376,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="Save_Click"/>
+                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
+
+                    <Grid Height="600">
+                        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="388,70,-192,0" VerticalAlignment="Top" Width="120"/>
+                        <Button x:Name="Conexion" Content="Abrir/Cerrar Conexión" HorizontalAlignment="Left" Margin="414,128,-312,-24" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="Conexion_Click" Width="214"/>
+                        <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Settings-->
+                        <Button x:Name="Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="582,72,-328,0" VerticalAlignment="Top" Click="Buscar_Click"/>
+
+                    </Grid>
 
 
 
 
                 </StackPanel>
+
 
 
 

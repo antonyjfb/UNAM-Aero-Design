@@ -36,6 +36,7 @@ namespace AeroUI
         public MainWindow()
         {
             InitializeComponent();
+            OcultarLabel();
             PnHome.Visibility = Visibility.Hidden;
             PnTakeOff.Visibility = Visibility.Hidden;
             PnFlightData.Visibility = Visibility.Hidden;
@@ -77,7 +78,10 @@ namespace AeroUI
             //Cada vez que se agregue un tipo de visualización compleja Ej: Gráfica
             //se añadirá como una función Ej: ModificarGrafica(parametros)
             //Para obtener la información usar la sintaxis log.datoRequerido Ej: log.PosX devuelve la posición en X
-            Xpos_Label.Content = log.Distancia;
+            lblLat.Content = log.Latitud;
+            lblLong.Content = log.Longitud;
+            lblSpeed.Content = log.Velocidad;
+            lblAlt.Content = log.Altura;
         }
 
         private void Conexion_Click(object sender, RoutedEventArgs e)
@@ -85,7 +89,7 @@ namespace AeroUI
             if(!toogle)
             {
                 AbrirConexion();
-
+                MostrarLabel();
             }
             else
             {
@@ -93,7 +97,20 @@ namespace AeroUI
             }
             toogle = !toogle;
         }
-
+        private void OcultarLabel()
+        {
+            lblLat.Visibility = Visibility.Hidden;
+            lblLong.Visibility = Visibility.Hidden;
+            lblSpeed.Visibility = Visibility.Hidden;
+            lblAlt.Visibility = Visibility.Hidden;
+        }
+        private void MostrarLabel()
+        {
+            lblLat.Visibility = Visibility.Visible;
+            lblLong.Visibility = Visibility.Visible;
+            lblSpeed.Visibility = Visibility.Visible;
+            lblAlt.Visibility = Visibility.Visible;
+        }
         private void CerrarConexion()
         {
             try
@@ -279,6 +296,11 @@ namespace AeroUI
         {
             CerrarConexion();
             Close();
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
