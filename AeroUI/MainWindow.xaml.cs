@@ -26,9 +26,14 @@ namespace AeroUI
     public partial class MainWindow : Window
     {
         private UAV device = new UAV();
+        // Lista completa de los datos 
         private List<DataLog> logUAV = new List<DataLog>();
         private bool toogle = false;
 
+        bool recordingIsAvaible = false;
+        bool initialTimeHasBeenSet = false;
+
+        double initialTimeWhenRecording = 0;
 
         //private Thread threadUI;
 
@@ -55,8 +60,21 @@ namespace AeroUI
                 //UI_Update(device); COMENTADA HASTA NUEVO AVISO
                 DataLog log = new DataLog(device);
 
-                //Se agrega el nuevo dato recibido al registro completo de datos
-                logUAV.Add(log);
+                // Si se está grabando, se guardan los datos en logUAV
+                if (recordingIsAvaible)
+                {
+                    if (!initialTimeHasBeenSet)
+                    {
+                        initialTimeWhenRecording = log.Tiempo;
+                        initialTimeHasBeenSet = true;
+                    }
+
+                    // Se calcula el tiempo de acuerdo con lo recibido por el Arduino
+                    log.Tiempo = log.Tiempo - initialTimeWhenRecording;
+
+                    //Se agrega el nuevo dato recibido al registro completo de datos
+                    logUAV.Add(log);
+                }
 
                 //Línea que contiene toda la información recopilada por los sensores
                 Console.WriteLine(log.CSV_Line);
@@ -82,6 +100,11 @@ namespace AeroUI
             lblLong.Content = log.Longitud;
             lblSpeed.Content = log.Velocidad;
             lblAlt.Content = log.Altura;
+            
+            if (recordingIsAvaible)
+            {
+                lblRecTime.Content = string.Format("{0:0.00}", log.Tiempo);
+            }
         }
 
         private void Conexion_Click(object sender, RoutedEventArgs e)
@@ -196,13 +219,16 @@ namespace AeroUI
             }
         }*/
 
+        // Se comentó el método Save_Click porque, en su lugar, se utiliza el método stopRecording
+
+        /*
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             string CSVheader = "";
             string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
             string CSVLog = CSVheader + CSVJoin;
             System.IO.File.WriteAllText(@"..\..\log.csv", CSVLog);
-        }
+        }*/
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
@@ -298,9 +324,21 @@ namespace AeroUI
             Close();
         }
 
-        private void btnStop_Click(object sender, RoutedEventArgs e)
+        private void startRecording(object sender, RoutedEventArgs e)
         {
+            recordingIsAvaible = true;
+        }
 
+        private void stopRecording(object sender, RoutedEventArgs e)
+        {
+            recordingIsAvaible = false;
+            initialTimeHasBeenSet = false;
+            lblRecTime.Content = 0;
+
+            string CSVheader = "";
+            string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
+            string CSVLog = CSVheader + CSVJoin;
+            System.IO.File.WriteAllText(@"..\..\log.csv", CSVLog);
         }
     }
 }

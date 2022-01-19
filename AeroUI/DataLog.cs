@@ -2,7 +2,7 @@
 {
     public class DataLog
     {
-        private double latitud, longitud, velocidad, altura, roll, pitch, yaw, distancia; //Debe tener las mismas variables que UAV
+        private double latitud, longitud, velocidad, altura, roll, pitch, yaw, distancia, tiempo; //Debe tener las mismas variables que UAV
         private string csv_line;
 
         public double Latitud
@@ -21,8 +21,29 @@
         { get { return yaw; } }
         public double Distancia
         { get { return distancia; } }
+        public double Tiempo
+        { get { return tiempo; } set { tiempo = value; } }
         public string CSV_Line
-        { get { return csv_line; } }
+        { get 
+            {
+                string[] parameters = new string[]
+                {
+                    string.Format("{0:0.00}", tiempo),
+                    latitud.ToString(),
+                    longitud.ToString(),
+                    velocidad.ToString(),
+                    altura.ToString(),
+                    roll.ToString(),
+                    pitch.ToString(),
+                    yaw.ToString(),
+                    distancia.ToString()
+                };
+
+                csv_line = string.Join(",", parameters);
+
+                return csv_line; 
+            } 
+        }
 
 
         public DataLog(UAV dataDevice)
@@ -35,7 +56,8 @@
             pitch = dataDevice.Pitch;
             yaw = dataDevice.Yaw;
             distancia = dataDevice.Distancia;
-            csv_line = dataDevice.CSV_Line;
+            tiempo = dataDevice.Tiempo;
+            // csv_line = dataDevice.CSV_Line;
         }
 
 

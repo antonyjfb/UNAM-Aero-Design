@@ -61,6 +61,15 @@ namespace AeroUI
                 return Convert.ToDouble(DataStringArray[7]);
             }
         }
+
+        public double Tiempo
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[7]) / 1000;
+            }
+        }
+
         public string CSV_Line
         {
             get
