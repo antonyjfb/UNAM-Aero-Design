@@ -1,5 +1,5 @@
 #include <Adafruit_Sensor.h>
-#include "MPU9250.h"
+
 #include <Adafruit_BMP280.h>
 #include <Servo.h>
 #include <Wire.h>
@@ -8,7 +8,6 @@
 ///////////////////////////////////Objetos//////////////////////////////////
 
 Adafruit_BMP280 bmp;    //bmp object
-MPU9250 mpu;            //mpu9250
 TinyGPSPlus gps;        //gps object
 Servo s1;    //Colonists release servo 1
 Servo s2;    //Colonists release servo 2
@@ -37,7 +36,6 @@ String coma = ",";
 
 void setup() {
   Serial.begin(9600);
-  Wire.begin();
   Serial1.begin(9600);       //Serial will be use by xBee communication
   Serial2.begin(9600);         //Serial will be use by GPS communication
   Serial.println("Setting up");
@@ -49,9 +47,6 @@ void setup() {
   s3.write(90);
   s4.attach(5);
   s4.write(110);
-
-
-//// B A R O M E T R O /////
 
 Serial.println("Calibrating BMP");
 
@@ -66,31 +61,6 @@ Serial.println("Done!");
   //while(!Serial) {} //Serial1
 
   P0 = bmp.readPressure() / 100;
-
-
-/// GIROSCOPIO ///
-
-if (!mpu.setup(0x68)) {  // change to your own address
-        while (1) {
-            Serial.println("MPU connection failed. Please check your connection with `connection_check` example.");
-            delay(5000);
-        }
-    }
-
-    // calibrate anytime you want to
-    Serial.println("Accel Gyro calibration will start in 5sec.");
-    Serial.println("Please leave the device still on the flat plane.");
-    mpu.verbose(true);
-    delay(5000);
-    mpu.calibrateAccelGyro();
-
-    Serial.println("Mag calibration will start in 5sec.");
-    Serial.println("Please Wave device in a figure eight until done.");
-    delay(5000);
-    mpu.calibrateMag();
-
-    print_calibration();
-    mpu.verbose(false);  
 }
 
 //////////////////////////////////////LOOP/////////////////////////////////////
@@ -114,13 +84,6 @@ void loop() {
   //BPM
   alt = bmp.readAltitude(P0);
 
-  //GIROSCOPIO
-      if (mpu.update()) {
-        static uint32_t prev_ms = millis();
-        if (millis() > prev_ms + 25) {
-            prev_ms = millis();
-        }
-    }
   //DATA
 
   data = lt + coma;
@@ -129,9 +92,6 @@ void loop() {
   data = data + alt + coma;
   data = data + SColonist + coma;
   data = data + SPayload + coma;
-  data = data + mpu.getYaw() + coma;
-  data = data + mpu.getPitch() + coma;
-  data = data + mpu.getRoll() + coma;
   data = data + "0";
   
   //latitud,longitud,velocidad,altura,BoolPlaneadores,BoolPayload,0
@@ -185,36 +145,4 @@ static void smartDelay(unsigned long ms)
     while (Serial2.available())
       gps.encode(Serial2.read());
   } while (millis() - start < ms);
-}
-
-void print_calibration() {
-    Serial.println("< calibration parameters >");
-    Serial.println("accel bias [g]: ");
-    Serial.print(mpu.getAccBiasX() * 1000.f / (float)MPU9250::CALIB_ACCEL_SENSITIVITY);
-    Serial.print(", ");
-    Serial.print(mpu.getAccBiasY() * 1000.f / (float)MPU9250::CALIB_ACCEL_SENSITIVITY);
-    Serial.print(", ");
-    Serial.print(mpu.getAccBiasZ() * 1000.f / (float)MPU9250::CALIB_ACCEL_SENSITIVITY);
-    Serial.println();
-    Serial.println("gyro bias [deg/s]: ");
-    Serial.print(mpu.getGyroBiasX() / (float)MPU9250::CALIB_GYRO_SENSITIVITY);
-    Serial.print(", ");
-    Serial.print(mpu.getGyroBiasY() / (float)MPU9250::CALIB_GYRO_SENSITIVITY);
-    Serial.print(", ");
-    Serial.print(mpu.getGyroBiasZ() / (float)MPU9250::CALIB_GYRO_SENSITIVITY);
-    Serial.println();
-    Serial.println("mag bias [mG]: ");
-    Serial.print(mpu.getMagBiasX());
-    Serial.print(", ");
-    Serial.print(mpu.getMagBiasY());
-    Serial.print(", ");
-    Serial.print(mpu.getMagBiasZ());
-    Serial.println();
-    Serial.println("mag scale []: ");
-    Serial.print(mpu.getMagScaleX());
-    Serial.print(", ");
-    Serial.print(mpu.getMagScaleY());
-    Serial.print(", ");
-    Serial.print(mpu.getMagScaleZ());
-    Serial.println();
 }
