@@ -35,6 +35,8 @@ namespace AeroUI
 
         double initialTimeWhenRecording = 0;
 
+        int numberOfFlight = 1;
+
         //private Thread threadUI;
 
         //Programa principal
@@ -335,10 +337,14 @@ namespace AeroUI
             initialTimeHasBeenSet = false;
             lblRecTime.Content = 0;
 
+            string currentDate = DateTime.Now.ToString("yy_MM_dd");
+            string fileName = currentDate + "-" + "flight" + numberOfFlight + ".csv";
             string CSVheader = "";
             string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
             string CSVLog = CSVheader + CSVJoin;
-            System.IO.File.WriteAllText(@"..\..\log.csv", CSVLog);
+            System.IO.File.WriteAllText(@"..\..\" + fileName, CSVLog);
+
+            numberOfFlight++;
         }
     }
 }
