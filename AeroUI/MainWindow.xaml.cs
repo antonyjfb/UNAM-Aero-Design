@@ -17,6 +17,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Threading;
+using System.IO;
 
 namespace AeroUI
 {
@@ -35,7 +36,7 @@ namespace AeroUI
 
         double initialTimeWhenRecording = 0;
 
-        int numberOfFlight = 1;
+        int numberOfFlight = 0;
 
         //private Thread threadUI;
 
@@ -53,7 +54,63 @@ namespace AeroUI
             device.NewDataPacketReceived += device_NewDataPacketReceived; //Declaracion evento que se ejecuta cada vez que se recibe un dato
             device.SetBaudRate(9600);
             //RealTimeUI_Setup();
+            setLastNumberOfFlight();
         }
+        private void setLastNumberOfFlight()
+        {
+
+            // Console.WriteLine("Current directory" + Directory.GetCurrentDirectory());
+
+            string currentDate = DateTime.Now.ToString("yy_MM_dd");
+
+            string path = @"../../Flights/" + currentDate;
+
+            if (Directory.Exists(path))
+            {
+                Console.WriteLine("The directory " + currentDate + " exists");
+
+                string[] fileEntries = Directory.GetFiles(path);
+
+                if(fileEntries.Length != 0)
+                {
+                    foreach (string file in fileEntries)
+                    {
+                        string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
+
+                        int lastCharIndex = fileName.Length - 1;
+
+                        char lastChar = fileName[lastCharIndex];
+
+                        int numberOfLastFlight = Int32.Parse(lastChar.ToString());
+
+                        if(numberOfFlight < numberOfLastFlight)
+                        {
+                            numberOfFlight = numberOfLastFlight;
+                        }
+                    }
+
+                    numberOfFlight++;
+
+                    Console.WriteLine("The last flight was:" + numberOfFlight);
+                }
+                else
+                {
+                    Console.WriteLine("There aren't any files");
+
+                    numberOfFlight = 1;
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("The directory doesn't exist but It has just been created.");
+
+                Directory.CreateDirectory(path);
+
+                numberOfFlight = 1;
+            }
+        }
+
         //Código ejecutado cuando se recibe un nuevo dato
         private void device_NewDataPacketReceived(object sender, EventArgs e)
         {
@@ -339,10 +396,13 @@ namespace AeroUI
 
             string currentDate = DateTime.Now.ToString("yy_MM_dd");
             string fileName = currentDate + "-" + "flight" + numberOfFlight + ".csv";
+
             string CSVheader = "";
             string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
             string CSVLog = CSVheader + CSVJoin;
-            System.IO.File.WriteAllText(@"..\..\" + fileName, CSVLog);
+
+            string path = @"../../Flights/" + currentDate + "/";
+            System.IO.File.WriteAllText(path + fileName, CSVLog);
 
             numberOfFlight++;
         }
