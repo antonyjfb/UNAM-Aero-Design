@@ -127,8 +127,10 @@
                                     " Width="80" FontSize="15" BorderBrush="#FF98CF79" Background="#FF89D690"/>
                             <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="166,45,0,0" VerticalAlignment="Top" Width="80" Height="31" Background="#FF7DD385" FontSize="15" Click="stopRecording"/>
                         </Grid>
-
                     </GroupBox>
+
+                    <Label x:Name="lblDistanceToTarget" Content="Distancia: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,45,550,0" Foreground="Pink" FontSize="25"/>
+
                 </StackPanel>
 
                 <!--PANEL TAKE OFF-->

@@ -9,14 +9,28 @@ namespace AeroUI
         {
             get
             {
-                return Convert.ToDouble(DataStringArray[0]);
+                double latitud = 0;
+
+                if(!String.IsNullOrEmpty(DataStringArray[0]))
+                {
+                    latitud = Convert.ToDouble(DataStringArray[0]);
+                }
+
+                return latitud;
             }
         }
         public double Longitud
         {
             get
             {
-                return Convert.ToDouble(DataStringArray[1]);
+                double longitud = 0;
+
+                if(!String.IsNullOrEmpty(DataStringArray[1]))
+                {
+                    longitud = Convert.ToDouble(DataStringArray[1]);
+                }
+
+                return longitud;
             }
         }
         public double Velocidad

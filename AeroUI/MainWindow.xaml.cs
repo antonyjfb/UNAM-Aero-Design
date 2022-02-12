@@ -27,16 +27,20 @@ namespace AeroUI
     public partial class MainWindow : Window
     {
         private UAV device = new UAV();
+
         // Lista completa de los datos 
         private List<DataLog> logUAV = new List<DataLog>();
         private bool toogle = false;
 
+        // When recording
         bool recordingIsAvaible = false;
         bool initialTimeHasBeenSet = false;
-
         double initialTimeWhenRecording = 0;
-
+        // When saving flight data
         int numberOfFlight = 0;
+        // When calculating distance from aircraft to target
+        string targetLatitude_String = "10";
+        string targetLongitude_String = "10";
 
         //private Thread threadUI;
 
@@ -128,11 +132,13 @@ namespace AeroUI
                         initialTimeHasBeenSet = true;
                     }
 
-                    // Se calcula el tiempo de acuerdo con lo recibido por el Arduino
+                    // Se calcula el tiempo de acuerdo con lo enviado por Arduino
                     log.Tiempo = log.Tiempo - initialTimeWhenRecording;
 
                     //Se agrega el nuevo dato recibido al registro completo de datos
                     logUAV.Add(log);
+
+                    
                 }
 
                 //Línea que contiene toda la información recopilada por los sensores
@@ -159,7 +165,9 @@ namespace AeroUI
             lblLong.Content = log.Longitud;
             lblSpeed.Content = log.Velocidad;
             lblAlt.Content = log.Altura;
-            
+            //Label de prueba para ver distancia con respecto al objetivo
+            lblDistanceToTarget.Content = "Distancia: " + getDistanceFromAircraftToTarget(log.Latitud, log.Longitud);
+
             if (recordingIsAvaible)
             {
                 lblRecTime.Content = string.Format("{0:0.00}", log.Tiempo);
@@ -405,6 +413,41 @@ namespace AeroUI
             System.IO.File.WriteAllText(path + fileName, CSVLog);
 
             numberOfFlight++;
+        }
+
+        private double getDistanceFromAircraftToTarget(double aircraftLatitude, double aircraftLongitude)
+        {
+            double distance = -1;
+            double targetLatitude;
+            double targetLongitude;
+            bool targetDataIsAvailable = !(String.IsNullOrEmpty(targetLatitude_String) || String.IsNullOrEmpty(targetLongitude_String));
+            bool targetLatitudeString_isDouble;
+            bool targetLongitudeString_isDouble;
+            bool bothTargetLatitudeAndLongitudeAreDouble;
+            
+            if(targetDataIsAvailable)
+            {
+                targetLatitudeString_isDouble = double.TryParse(targetLatitude_String, out targetLatitude);
+                targetLongitudeString_isDouble = double.TryParse(targetLongitude_String, out targetLongitude);
+
+                bothTargetLatitudeAndLongitudeAreDouble = targetLongitudeString_isDouble && targetLatitudeString_isDouble;
+
+                if(bothTargetLatitudeAndLongitudeAreDouble)
+                {
+                    if(!(aircraftLatitude == 0 && aircraftLongitude == 0))
+                    {
+                        double d_latitude = targetLatitude - aircraftLatitude;
+                        double d_longitude = targetLongitude - aircraftLongitude;
+                        distance = Math.Acos( Math.Sin(aircraftLatitude) * Math.Sin(targetLatitude) + Math.Cos(aircraftLatitude) * Math.Cos(targetLatitude) * Math.Cos(targetLongitude - aircraftLongitude)) * 111180;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No hay datos acerca de las coordenadas del objetivo.");
+            }
+
+            return distance;
         }
     }
 }
