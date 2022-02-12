@@ -105,9 +105,12 @@ namespace AeroUI
                 dataPacket = board.ReadTo("\x03");
                 string[] serialString = dataPacket.Split(new string[] { "\x02" }, StringSplitOptions.RemoveEmptyEntries);
                 dataPacket = serialString[0];
+
                 if (NewDataPacketReceived != null)
                 {
                     dataArray = dataPacket.Split(',');
+                    Console.WriteLine("dataArray: ");
+                    Console.WriteLine("[{0}]", string.Join(",", dataArray));
                     NewDataPacketReceived(this, new EventArgs());
                 }
             }

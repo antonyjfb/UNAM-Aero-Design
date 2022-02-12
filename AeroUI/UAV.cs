@@ -15,6 +15,10 @@ namespace AeroUI
                 {
                     latitud = Convert.ToDouble(DataStringArray[0]);
                 }
+                else
+                {
+                    Console.WriteLine("DataStringArray[0] es nulo o está vacío");
+                }
 
                 return latitud;
             }
@@ -28,6 +32,10 @@ namespace AeroUI
                 if(!String.IsNullOrEmpty(DataStringArray[1]))
                 {
                     longitud = Convert.ToDouble(DataStringArray[1]);
+                }
+                else
+                {
+                    Console.WriteLine("DataStringArray[1] es nulo o está vacío");
                 }
 
                 return longitud;
