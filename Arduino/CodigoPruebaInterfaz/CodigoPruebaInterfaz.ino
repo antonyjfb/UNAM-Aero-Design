@@ -21,6 +21,8 @@ void loop() {
 //        Serial.print(dato);
 //        Serial.print("\x03");
         Serial.print("\x02");
+        Serial.print(millis());
+        Serial.print(",");
         Serial.print(sin(x*(3.14/180)));
         Serial.print(",");
         Serial.print(2*sin(x*(3.14/180)));
@@ -35,9 +37,17 @@ void loop() {
         Serial.print(",");
         Serial.print(7*sin(x*(3.14/180)));
         Serial.print(",");
-        Serial.print(millis());
-        x++;
+        Serial.print(8*sin(x*(3.14/180)));
+        Serial.print(",");
+        Serial.print(9*sin(x*(3.14/180)));
+        Serial.print(",");
+        Serial.print(10*sin(x*(3.14/180)));
+        Serial.print(",");
+        Serial.print(11*sin(x*(3.14/180)));
+        Serial.print(",");
+        Serial.print(12*sin(x*(3.14/180)));
         Serial.print("\x03");
+        x++;
         if(Serial.available()>0)
           if(Serial.readString() == "0#")
             flujo = false;
