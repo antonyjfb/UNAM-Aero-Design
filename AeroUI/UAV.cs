@@ -11,9 +11,9 @@ namespace AeroUI
             {
                 double latitud = 0;
 
-                if(!String.IsNullOrEmpty(DataStringArray[0]))
+                if (!String.IsNullOrEmpty(DataStringArray[2]))
                 {
-                    latitud = Convert.ToDouble(DataStringArray[0]);
+                    latitud = Convert.ToDouble(DataStringArray[2]);
                 }
                 else
                 {
@@ -29,9 +29,9 @@ namespace AeroUI
             {
                 double longitud = 0;
 
-                if(!String.IsNullOrEmpty(DataStringArray[1]))
+                if (!String.IsNullOrEmpty(DataStringArray[3]))
                 {
-                    longitud = Convert.ToDouble(DataStringArray[1]);
+                    longitud = Convert.ToDouble(DataStringArray[3]);
                 }
                 else
                 {
@@ -45,42 +45,72 @@ namespace AeroUI
         {
             get
             {
-                return Convert.ToDouble(DataStringArray[2]);
+                return Convert.ToDouble(DataStringArray[1]);
             }
         }
-        public double Altura
-        {
-            get
-            {
-                return Convert.ToDouble(DataStringArray[3]);
-            }
-        }
-        public double Roll
-        {
-            get
-            {
-                return Convert.ToDouble(DataStringArray[4]);
-            }
-        }
-        public double Pitch
-        {
-            get
-            {
-                return Convert.ToDouble(DataStringArray[5]);
-            }
-        }
-        public double Yaw
+
+        public double VelocidadZ
         {
             get
             {
                 return Convert.ToDouble(DataStringArray[6]);
             }
         }
-        public double Distancia
+
+        public double Altura
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[5]);
+            }
+        }
+        public double AceleracionX
         {
             get
             {
                 return Convert.ToDouble(DataStringArray[7]);
+            }
+        }
+        public double AceleracionY
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[8]);
+            }
+        }
+        public double AceleracionZ
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[9]);
+            }
+        }
+        public double Roll
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[10]);
+            }
+        }
+        public double Pitch
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[11]);
+            }
+        }
+        public double Yaw
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[12]);
+            }
+        }
+        public double Distancia
+        {
+            get
+            {
+                return Convert.ToDouble(DataStringArray[4]);
             }
         }
 
@@ -88,7 +118,7 @@ namespace AeroUI
         {
             get
             {
-                return Convert.ToDouble(DataStringArray[7]) / 1000;
+                return Convert.ToDouble(DataStringArray[0]) / 1000;
             }
         }
 
