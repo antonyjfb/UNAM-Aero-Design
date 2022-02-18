@@ -44,3 +44,6 @@ C:\Users\pedro\OneDrive\Escritorio\AeroDesign\UNAM-Aero-Design\AeroUI\obj\Debug\
 C:\Users\pedro\OneDrive\Escritorio\AeroDesign\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.CoreCompileInputs.cache
 C:\Users\pedro\OneDrive\Escritorio\AeroDesign\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.exe
 C:\Users\pedro\OneDrive\Escritorio\AeroDesign\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.pdb
+C:\Users\andre\Desktop\UNAM AERO DESIGN\UNAM-Aero-Design\AeroUI\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\andre\Desktop\UNAM AERO DESIGN\UNAM-Aero-Design\AeroUI\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\andre\Desktop\UNAM AERO DESIGN\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.CopyComplete

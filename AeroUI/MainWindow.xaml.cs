@@ -18,6 +18,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Threading;
 using System.IO;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace AeroUI
 {
@@ -44,6 +45,9 @@ namespace AeroUI
 
         //private Thread threadUI;
 
+        // GPS
+        Location location = new Location(19.424184, -99.134937);
+
         //Programa principal
         public MainWindow()
         {
@@ -59,6 +63,33 @@ namespace AeroUI
             device.SetBaudRate(9600);
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
+
+            aircraft_pin.Location = location;
+            AeroMap.Center = location;
+
+            /*
+            double lat = 47.620574;
+            double lon = -122.34942;
+
+            Location location = new Location(lat,lon);
+
+            for (int i = 0; i < 50; i++)
+            {
+                lat = lat + i;
+                lon = lon + i;
+
+                location.Latitude = lat;
+                location.Longitude = lon;
+
+                Console.WriteLine("Latitude: " + lat);
+                Console.WriteLine("Longitude: " + lon);
+
+                aircraft_pin.Location = location;
+                AeroMap.Center = location;
+
+                Thread.Sleep(1000);
+            }*/
+
         }
         private void setLastNumberOfFlight()
         {
@@ -141,6 +172,13 @@ namespace AeroUI
                     
                 }
 
+                // GPS
+                location.Latitude = log.Latitud;
+                location.Longitude = log.Longitud;
+
+                Console.WriteLine("Latitude: " + location.Latitude);
+                Console.WriteLine("Longitude: " + location.Longitude);
+
                 //Línea que contiene toda la información recopilada por los sensores
                 Console.WriteLine(log.CSV_Line);
 
@@ -167,6 +205,9 @@ namespace AeroUI
             lblAlt.Content = log.Altura;
             //Label de prueba para ver distancia con respecto al objetivo
             lblDistanceToTarget.Content = "Distancia: " + getDistanceFromAircraftToTarget(log.Latitud, log.Longitud);
+            // GPS
+            aircraft_pin.Location = location;
+            AeroMap.Center = location;
 
             if (recordingIsAvaible)
             {

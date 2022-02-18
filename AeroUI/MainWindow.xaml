@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:AeroUI"
         mc:Ignorable="d"
         Title="MainWindow" 
@@ -157,14 +158,14 @@
 
                 <!--PANEL Maps -->
                 <StackPanel x:Name="PnMaps" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    <TextBlock Margin="250,130,250,50" Foreground="Aqua" FontSize="30" Text="PANEL MAPS"/>
+                    <!-- <TextBlock Margin="250,130,250,50" Foreground="Aqua" FontSize="30" Text="PANEL MAPS"/> -->
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL MAPS-->
-
-
-
-
-
-
+                    <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
+                        <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" ZoomLevel="4">
+                            <m:Pushpin x:Name="aircraft_pin"/>
+                        </m:Map>
+                    </Grid>
                 </StackPanel>
 
                 <!--PANEL Settings -->
