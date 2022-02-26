@@ -1,7 +1,7 @@
 int x = 0;
-float y = 0.01;
+float y = 0.000001;
 float lat = 19.424184;
-float lon = -99.134937;
+float longi = -99.134937;
 
 // the setup routine runs once when you press reset:
 void setup() {
@@ -28,9 +28,9 @@ void loop() {
         Serial.print(",");
         Serial.print(sin(x*(3.14/180))); // [1]
         Serial.print(",");
-        Serial.print(lat); // [2]
+        Serial.print(lat,6); // [2]
         Serial.print(",");
-        Serial.print(lon); // [3]
+        Serial.print(longi,6); // [3]
         Serial.print(",");
         Serial.print(4*sin(x*(3.14/180))); // [4]
         Serial.print(",");
@@ -52,7 +52,7 @@ void loop() {
         Serial.print("\x03");
         x++;
         lat = lat + y;
-        lon = lon + y;
+        longi = longi + y;
         if(Serial.available()>0)
           if(Serial.readString() == "0#")
             flujo = false;

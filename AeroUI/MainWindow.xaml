@@ -162,7 +162,7 @@
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL MAPS-->
                     <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
                         <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" ZoomLevel="4">
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="20">
                             <m:Pushpin x:Name="aircraft_pin"/>
                         </m:Map>
                     </Grid>
