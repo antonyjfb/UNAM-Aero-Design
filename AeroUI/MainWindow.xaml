@@ -124,9 +124,9 @@
                         <Grid>
                             <Label x:Name="lbl_RecTime" Content="Recording time:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
                             <Label x:Name="lblRecTime" Content="RecTime" HorizontalAlignment="Left" Margin="166,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="30" RenderTransformOrigin="0.586,-0.588"/>
-                            <Button x:Name="btnRecord" Content="Record" HorizontalAlignment="Left" Margin="32,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="startRecording" Height="31
+                            <Button x:Name="btnRecord" Content="Record" HorizontalAlignment="Left" Margin="101,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="startRecording" Height="31
                                     " Width="80" FontSize="15" BorderBrush="#FF98CF79" Background="#FF89D690"/>
-                            <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Margin="166,45,0,0" VerticalAlignment="Top" Width="80" Height="31" Background="#FF7DD385" FontSize="15" Click="stopRecording"/>
+                            
                         </Grid>
                     </GroupBox>
 

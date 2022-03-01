@@ -42,6 +42,8 @@ namespace AeroUI
         // When calculating distance from aircraft to target
         string targetLatitude_String = "10";
         string targetLongitude_String = "10";
+        //variable para el control del boton de Record Flight Data
+        bool ON = true;
 
         //private Thread threadUI;
 
@@ -434,27 +436,35 @@ namespace AeroUI
 
         private void startRecording(object sender, RoutedEventArgs e)
         {
-            recordingIsAvaible = true;
+            if (ON)
+            {
+                recordingIsAvaible = true;
+                btnRecord.Content = "Stop";
+                ON = false;
+            }
+            else
+            {
+                btnRecord.Content = "Record";
+                recordingIsAvaible = false;
+                initialTimeHasBeenSet = false;
+                lblRecTime.Content = 0;
+
+                string currentDate = DateTime.Now.ToString("yy_MM_dd");
+                string fileName = currentDate + "-" + "flight" + numberOfFlight + ".csv";
+
+                string CSVheader = "";
+                string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
+                string CSVLog = CSVheader + CSVJoin;
+
+                string path = @"../../Flights/" + currentDate + "/";
+                System.IO.File.WriteAllText(path + fileName, CSVLog);
+
+                numberOfFlight++;
+                ON = true;
+            }
+            
         }
 
-        private void stopRecording(object sender, RoutedEventArgs e)
-        {
-            recordingIsAvaible = false;
-            initialTimeHasBeenSet = false;
-            lblRecTime.Content = 0;
-
-            string currentDate = DateTime.Now.ToString("yy_MM_dd");
-            string fileName = currentDate + "-" + "flight" + numberOfFlight + ".csv";
-
-            string CSVheader = "";
-            string CSVJoin = String.Join("\n", logUAV.Select(m => m.CSV_Line)); //Concatena las CSVLine de todos los objetos de la lista
-            string CSVLog = CSVheader + CSVJoin;
-
-            string path = @"../../Flights/" + currentDate + "/";
-            System.IO.File.WriteAllText(path + fileName, CSVLog);
-
-            numberOfFlight++;
-        }
 
         private double getDistanceFromAircraftToTarget(double aircraftLatitude, double aircraftLongitude)
         {
