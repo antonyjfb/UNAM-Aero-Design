@@ -49,6 +49,7 @@ namespace AeroUI
 
         // GPS
         Location location = new Location(19.424184, -99.134937);
+        string movingMapDirection = "Up";
 
         //Programa principal
         public MainWindow()
@@ -66,6 +67,7 @@ namespace AeroUI
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
 
+            AeroMap.Mode = new AerialMode();
             aircraft_pin.Location = location;
             AeroMap.Center = location;
 
@@ -209,11 +211,36 @@ namespace AeroUI
             lblDistanceToTarget.Content = "Distancia: " + getDistanceFromAircraftToTarget(log.Latitud, log.Longitud);
             // GPS
             aircraft_pin.Location = location;
-            AeroMap.Center = location;
+            jiggleMap();
 
             if (recordingIsAvaible)
             {
                 lblRecTime.Content = string.Format("{0:0.00}", log.Tiempo);
+            }
+        }
+
+        private void jiggleMap()
+        {
+            double increment = 0.00000001;
+            double center_latitude = 19.424184;
+            double center_longitude = -99.134937;
+            Location location;
+
+            if (movingMapDirection == "Up")
+            {
+                location = new Location(center_latitude + increment, center_longitude);
+                AeroMap.Center = location;
+                movingMapDirection = "Down";
+            }
+            else if(movingMapDirection == "Down")
+            {
+                location = new Location(center_latitude - increment, center_longitude);
+                AeroMap.Center = location;
+                movingMapDirection = "Up";
+            }
+            else
+            {
+                Console.WriteLine("Incorrect value for movingMapDirection");
             }
         }
 
