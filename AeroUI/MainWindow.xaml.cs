@@ -37,19 +37,26 @@ namespace AeroUI
         bool recordingIsAvaible = false;
         bool initialTimeHasBeenSet = false;
         double initialTimeWhenRecording = 0;
+
         // When saving flight data
         int numberOfFlight = 0;
+
         // When calculating distance from aircraft to target
         string targetLatitude_String = "10";
         string targetLongitude_String = "10";
+
         //variable para el control del boton de Record Flight Data
         bool ON = true;
 
         //private Thread threadUI;
 
         // GPS
-        Location location = new Location(19.424184, -99.134937);
+        bool firstLocationDataHasBeenSet = false;
+        double center_latitude = 0;
+        double center_longitude = 0;
         string movingMapDirection = "Up";
+        Location location = new Location(19.424184, -99.134937);
+        
 
         //Programa principal
         public MainWindow()
@@ -70,29 +77,6 @@ namespace AeroUI
             AeroMap.Mode = new AerialMode();
             aircraft_pin.Location = location;
             AeroMap.Center = location;
-
-            /*
-            double lat = 47.620574;
-            double lon = -122.34942;
-
-            Location location = new Location(lat,lon);
-
-            for (int i = 0; i < 50; i++)
-            {
-                lat = lat + i;
-                lon = lon + i;
-
-                location.Latitude = lat;
-                location.Longitude = lon;
-
-                Console.WriteLine("Latitude: " + lat);
-                Console.WriteLine("Longitude: " + lon);
-
-                aircraft_pin.Location = location;
-                AeroMap.Center = location;
-
-                Thread.Sleep(1000);
-            }*/
 
         }
         private void setLastNumberOfFlight()
@@ -158,6 +142,16 @@ namespace AeroUI
                 //UI_Update(device); COMENTADA HASTA NUEVO AVISO
                 DataLog log = new DataLog(device);
 
+                if(!firstLocationDataHasBeenSet)
+                {
+                    if(!(log.Latitud == 0 || log.Longitud == 0))
+                    {
+                        center_latitude = log.Latitud;
+                        center_longitude = log.Longitud;
+                        firstLocationDataHasBeenSet = true;
+                    }
+                }
+
                 // Si se está grabando, se guardan los datos en logUAV
                 if (recordingIsAvaible)
                 {
@@ -172,8 +166,6 @@ namespace AeroUI
 
                     //Se agrega el nuevo dato recibido al registro completo de datos
                     logUAV.Add(log);
-
-                    
                 }
 
                 // GPS
@@ -209,9 +201,12 @@ namespace AeroUI
             lblAlt.Content = log.Altura;
             //Label de prueba para ver distancia con respecto al objetivo
             lblDistanceToTarget.Content = "Distancia: " + getDistanceFromAircraftToTarget(log.Latitud, log.Longitud);
-            // GPS
-            aircraft_pin.Location = location;
-            jiggleMap();
+
+            if(firstLocationDataHasBeenSet)
+            {
+                aircraft_pin.Location = location;
+                jiggleMap();
+            }
 
             if (recordingIsAvaible)
             {
@@ -222,8 +217,6 @@ namespace AeroUI
         private void jiggleMap()
         {
             double increment = 0.00000001;
-            double center_latitude = 19.424184;
-            double center_longitude = -99.134937;
             Location location;
 
             if (movingMapDirection == "Up")

@@ -11,13 +11,13 @@ namespace AeroUI
             {
                 double latitud = 0;
 
-                if (!String.IsNullOrEmpty(DataStringArray[2]))
+                if(double.TryParse(DataStringArray[2], out latitud))
                 {
-                    latitud = Convert.ToDouble(DataStringArray[2]);
+                    Console.WriteLine("El dato recibido de latitud es un dato numérico.");
                 }
                 else
                 {
-                    Console.WriteLine("DataStringArray[0] es nulo o está vacío");
+                    Console.WriteLine("El dato recibido de latitud NO es un dato numérico");
                 }
 
                 return latitud;
@@ -29,13 +29,13 @@ namespace AeroUI
             {
                 double longitud = 0;
 
-                if (!String.IsNullOrEmpty(DataStringArray[3]))
+                if(double.TryParse(DataStringArray[3], out longitud))
                 {
-                    longitud = Convert.ToDouble(DataStringArray[3]);
+                    Console.WriteLine("El dato recibido de longitud es un dato numérico.");
                 }
                 else
                 {
-                    Console.WriteLine("DataStringArray[1] es nulo o está vacío");
+                    Console.WriteLine("El dato recibido de longitud NO es un dato numérico");
                 }
 
                 return longitud;
