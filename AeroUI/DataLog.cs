@@ -1,4 +1,6 @@
-﻿namespace AeroUI
+﻿using System;
+
+namespace AeroUI
 {
     public class DataLog
     {
@@ -81,6 +83,28 @@
             // csv_line = dataDevice.CSV_Line;
         }
 
+        public double getDistanceToTarget(string targetLatitude_String, string targetLongitude_String)
+        {
+            double distance = -1;
+            double targetLatitude;
+            double targetLongitude;
+            double aircraftLatitude = this.latitud;
+            double aircraftLongitude = this.Longitud;
+
+            bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
+            bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
+            bool targetLocationIsValid = targetLatitudeIsValid && targetLongitudeIsValid;
+            bool aircraftLocationIsValid = aircraftLatitude != 0 && aircraftLongitude != 0;
+
+            if(targetLocationIsValid && aircraftLocationIsValid)
+            {
+                double d_latitude = targetLatitude - aircraftLatitude;
+                double d_longitude = targetLongitude - aircraftLongitude;
+                distance = Math.Acos(Math.Sin(aircraftLatitude) * Math.Sin(targetLatitude) + Math.Cos(aircraftLatitude) * Math.Cos(targetLatitude) * Math.Cos(targetLongitude - aircraftLongitude)) * 111180;
+            }
+
+            return distance;
+        }
 
     }
 }

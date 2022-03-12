@@ -200,7 +200,7 @@ namespace AeroUI
             lblSpeed.Content = log.Velocidad;
             lblAlt.Content = log.Altura;
             //Label de prueba para ver distancia con respecto al objetivo
-            lblDistanceToTarget.Content = "Distancia: " + getDistanceFromAircraftToTarget(log.Latitud, log.Longitud);
+            lblDistanceToTarget.Content = "Distancia: " + log.getDistanceToTarget(targetLatitude_String, targetLongitude_String);
 
             if(firstLocationDataHasBeenSet)
             {
@@ -485,40 +485,5 @@ namespace AeroUI
             
         }
 
-
-        private double getDistanceFromAircraftToTarget(double aircraftLatitude, double aircraftLongitude)
-        {
-            double distance = -1;
-            double targetLatitude;
-            double targetLongitude;
-            bool targetDataIsAvailable = !(String.IsNullOrEmpty(targetLatitude_String) || String.IsNullOrEmpty(targetLongitude_String));
-            bool targetLatitudeString_isDouble;
-            bool targetLongitudeString_isDouble;
-            bool bothTargetLatitudeAndLongitudeAreDouble;
-            
-            if(targetDataIsAvailable)
-            {
-                targetLatitudeString_isDouble = double.TryParse(targetLatitude_String, out targetLatitude);
-                targetLongitudeString_isDouble = double.TryParse(targetLongitude_String, out targetLongitude);
-
-                bothTargetLatitudeAndLongitudeAreDouble = targetLongitudeString_isDouble && targetLatitudeString_isDouble;
-
-                if(bothTargetLatitudeAndLongitudeAreDouble)
-                {
-                    if(!(aircraftLatitude == 0 && aircraftLongitude == 0))
-                    {
-                        double d_latitude = targetLatitude - aircraftLatitude;
-                        double d_longitude = targetLongitude - aircraftLongitude;
-                        distance = Math.Acos( Math.Sin(aircraftLatitude) * Math.Sin(targetLatitude) + Math.Cos(aircraftLatitude) * Math.Cos(targetLatitude) * Math.Cos(targetLongitude - aircraftLongitude)) * 111180;
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("No hay datos acerca de las coordenadas del objetivo.");
-            }
-
-            return distance;
-        }
     }
 }
