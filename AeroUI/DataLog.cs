@@ -83,20 +83,14 @@ namespace AeroUI
             // csv_line = dataDevice.CSV_Line;
         }
 
-        public double getDistanceToTarget(string targetLatitude_String, string targetLongitude_String)
+        public double getDistanceToTarget(double targetLatitude, double targetLongitude)
         {
             double distance = -1;
-            double targetLatitude;
-            double targetLongitude;
             double aircraftLatitude = this.latitud;
             double aircraftLongitude = this.Longitud;
-
-            bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
-            bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
-            bool targetLocationIsValid = targetLatitudeIsValid && targetLongitudeIsValid;
             bool aircraftLocationIsValid = aircraftLatitude != 0 && aircraftLongitude != 0;
 
-            if(targetLocationIsValid && aircraftLocationIsValid)
+            if(aircraftLocationIsValid)
             {
                 double d_latitude = targetLatitude - aircraftLatitude;
                 double d_longitude = targetLongitude - aircraftLongitude;

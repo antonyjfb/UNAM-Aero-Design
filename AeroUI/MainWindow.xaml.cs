@@ -42,8 +42,8 @@ namespace AeroUI
         int numberOfFlight = 0;
 
         // When calculating distance from aircraft to target
-        string targetLatitude_String = "10";
-        string targetLongitude_String = "10";
+        string targetLatitude_String = "19.424184";
+        string targetLongitude_String = "-99.134937";
 
         //variable para el control del boton de Record Flight Data
         bool ON = true;
@@ -52,10 +52,14 @@ namespace AeroUI
 
         // GPS
         bool firstLocationDataHasBeenSet = false;
+        bool targetLocationHasBeenSet = false;
         double center_latitude = 0;
         double center_longitude = 0;
+        double targetLatitude;
+        double targetLongitude;
         string movingMapDirection = "Up";
-        Location location = new Location(19.424184, -99.134937);
+        Location aircraftLocation = new Location(19.424184, -99.134937);
+        Location targetLocation;
         
 
         //Programa principal
@@ -73,10 +77,8 @@ namespace AeroUI
             device.SetBaudRate(9600);
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
-
+            setTargetLocation();
             AeroMap.Mode = new AerialMode();
-            aircraft_pin.Location = location;
-            AeroMap.Center = location;
 
         }
         private void setLastNumberOfFlight()
@@ -148,6 +150,7 @@ namespace AeroUI
                     {
                         center_latitude = log.Latitud;
                         center_longitude = log.Longitud;
+                        AeroMap.Center = new Location(center_latitude, center_longitude);
                         firstLocationDataHasBeenSet = true;
                     }
                 }
@@ -169,11 +172,11 @@ namespace AeroUI
                 }
 
                 // GPS
-                location.Latitude = log.Latitud;
-                location.Longitude = log.Longitud;
+                aircraftLocation.Latitude = log.Latitud;
+                aircraftLocation.Longitude = log.Longitud;
 
-                Console.WriteLine("Latitude: " + location.Latitude);
-                Console.WriteLine("Longitude: " + location.Longitude);
+                Console.WriteLine("Latitude: " + aircraftLocation.Latitude);
+                Console.WriteLine("Longitude: " + aircraftLocation.Longitude);
 
                 //Línea que contiene toda la información recopilada por los sensores
                 Console.WriteLine(log.CSV_Line);
@@ -200,11 +203,16 @@ namespace AeroUI
             lblSpeed.Content = log.Velocidad;
             lblAlt.Content = log.Altura;
             //Label de prueba para ver distancia con respecto al objetivo
-            lblDistanceToTarget.Content = "Distancia: " + log.getDistanceToTarget(targetLatitude_String, targetLongitude_String);
 
-            if(firstLocationDataHasBeenSet)
+            if(targetLocationHasBeenSet)
             {
-                aircraft_pin.Location = location;
+                lblDistanceToTarget.Content = "Distancia: " + log.getDistanceToTarget(targetLatitude, targetLongitude);
+                drawLineFromAircraftToTarget();
+            }
+
+            if (firstLocationDataHasBeenSet)
+            {
+                aircraft_pin.Location = aircraftLocation;
                 jiggleMap();
             }
 
@@ -234,6 +242,34 @@ namespace AeroUI
             else
             {
                 Console.WriteLine("Incorrect value for movingMapDirection");
+            }
+        }
+
+        private void drawLineFromAircraftToTarget()
+        {
+            lineFromAircraftToTarget.Locations = new LocationCollection()
+            {
+                targetLocation,
+                aircraftLocation
+            };
+        }
+
+        private void setTargetLocation()
+        {
+            bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
+            bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
+            targetLocationHasBeenSet = targetLatitudeIsValid && targetLongitudeIsValid;
+
+            if(targetLocationHasBeenSet)
+            {
+                targetLocation = new Location(targetLatitude, targetLongitude);
+                Pushpin targetPin = new Pushpin();
+                targetPin.Location = targetLocation;
+                AeroMap.Children.Add(targetPin);
+            }
+            else
+            {
+                Console.WriteLine("Hubo un problema al establecer la ubicación del objetivo");
             }
         }
 
