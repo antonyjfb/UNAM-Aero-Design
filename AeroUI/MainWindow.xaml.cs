@@ -59,7 +59,9 @@ namespace AeroUI
         double targetLongitude;
         string movingMapDirection = "Up";
         Location aircraftLocation = new Location(19.424184, -99.134937);
+        Location centerLocation = new Location(19.424184, -99.134937);
         Location targetLocation;
+        
         
 
         //Programa principal
@@ -150,10 +152,15 @@ namespace AeroUI
                     {
                         center_latitude = log.Latitud;
                         center_longitude = log.Longitud;
-                        AeroMap.Center = new Location(center_latitude, center_longitude);
+                        centerLocation.Latitude = center_latitude;
+                        centerLocation.Longitude = center_longitude;
                         firstLocationDataHasBeenSet = true;
+                        Console.WriteLine("Se ha establecido la ubicación central");
                     }
                 }
+
+                Console.WriteLine("Latitud del centro: " + centerLocation.Latitude);
+                Console.WriteLine("Latitud del centro: " + centerLocation.Longitude);
 
                 // Si se está grabando, se guardan los datos en logUAV
                 if (recordingIsAvaible)
@@ -212,6 +219,7 @@ namespace AeroUI
 
             if (firstLocationDataHasBeenSet)
             {
+                AeroMap.Center = centerLocation;
                 aircraft_pin.Location = aircraftLocation;
                 jiggleMap();
             }
