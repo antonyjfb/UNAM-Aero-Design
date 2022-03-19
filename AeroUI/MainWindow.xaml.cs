@@ -53,7 +53,6 @@ namespace AeroUI
         // GPS
         bool firstLocationDataHasBeenSet = false;
         bool targetLocationHasBeenSet = false;
-        int indexTargetPin;
         double center_latitude = 0;
         double center_longitude = 0;
         double targetLatitude;
@@ -63,6 +62,7 @@ namespace AeroUI
         Location centerLocation = new Location(19.424184, -99.134937);
         Location targetLocation;
         Pushpin targetPin;
+        LocationCollection aircraftLocationsCollection = new LocationCollection();
 
         //Programa principal
         public MainWindow()
@@ -221,6 +221,7 @@ namespace AeroUI
                 AeroMap.Center = centerLocation;
                 aircraft_pin.Location = aircraftLocation;
                 jiggleMap();
+                drawAircraftRoute();
             }
 
             if (recordingIsAvaible)
@@ -250,6 +251,13 @@ namespace AeroUI
             {
                 Console.WriteLine("Incorrect value for movingMapDirection");
             }
+        }
+
+        private void drawAircraftRoute()
+        {
+            aircraftLocationsCollection.Add(new Location(aircraftLocation.Latitude, aircraftLocation.Longitude));
+
+            aircraftRoute.Locations = aircraftLocationsCollection;
         }
 
         private void drawLineFromAircraftToTarget()
