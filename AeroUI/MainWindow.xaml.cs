@@ -53,6 +53,7 @@ namespace AeroUI
         // GPS
         bool firstLocationDataHasBeenSet = false;
         bool targetLocationHasBeenSet = false;
+        int indexTargetPin;
         double center_latitude = 0;
         double center_longitude = 0;
         double targetLatitude;
@@ -79,7 +80,6 @@ namespace AeroUI
             device.SetBaudRate(9600);
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
-            setTargetLocation();
             AeroMap.Mode = new AerialMode();
 
         }
@@ -262,8 +262,10 @@ namespace AeroUI
             };
         }
 
-        private void setTargetLocation()
+        private void setTargetLocation(object sender, RoutedEventArgs e)
         {
+            targetLatitude_String = LatitudeTextBox.Text;
+            targetLongitude_String = LongitudeTextBox.Text;
             bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
             bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
             targetLocationHasBeenSet = targetLatitudeIsValid && targetLongitudeIsValid;
@@ -274,10 +276,13 @@ namespace AeroUI
                 Pushpin targetPin = new Pushpin();
                 targetPin.Location = targetLocation;
                 AeroMap.Children.Add(targetPin);
+
             }
             else
             {
                 Console.WriteLine("Hubo un problema al establecer la ubicación del objetivo");
+
+                MessageBox.Show("Target's location cannot be saved", "Unable to save", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

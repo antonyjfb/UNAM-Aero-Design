@@ -177,6 +177,13 @@
                         <Button x:Name="Conexion" Content="Abrir/Cerrar Conexión" HorizontalAlignment="Left" Margin="414,128,-312,-24" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="Conexion_Click" Width="214"/>
                         <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Settings-->
                         <Button x:Name="Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="582,72,-328,0" VerticalAlignment="Top" Click="Buscar_Click"/>
+                        
+                        <!-- Para indicar el objetivo -->
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,200,-320,0" Foreground="White" FontSize="20"> Latitud: </Label>
+                        <TextBox x:Name="LatitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,210,-320,0" Width="120"/>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,220,-320,0" Foreground="White" FontSize="20">Longitud:</Label>
+                        <TextBox x:Name="LongitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,230,-320,0" Width="120"/>
+                        <Button x:Name="setTargetButton" Content="Establecer objetivo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,300,-320,0" Click="setTargetLocation"/>
 
                     </Grid>
 
