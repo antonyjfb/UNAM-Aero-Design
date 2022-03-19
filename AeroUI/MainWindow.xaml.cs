@@ -62,8 +62,7 @@ namespace AeroUI
         Location aircraftLocation = new Location(19.424184, -99.134937);
         Location centerLocation = new Location(19.424184, -99.134937);
         Location targetLocation;
-        
-        
+        Pushpin targetPin;
 
         //Programa principal
         public MainWindow()
@@ -268,15 +267,23 @@ namespace AeroUI
             targetLongitude_String = LongitudeTextBox.Text;
             bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
             bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
-            targetLocationHasBeenSet = targetLatitudeIsValid && targetLongitudeIsValid;
+            bool targetLocationIsValid = targetLatitudeIsValid && targetLongitudeIsValid;
 
-            if(targetLocationHasBeenSet)
+            if(targetLocationIsValid)
             {
+                if(AeroMap.Children.Contains(targetPin))
+                {
+                    Console.WriteLine("== El mapa ya tiene un pin para el objetivo, que se procede a eliminar para colocar uno nuevo ==");
+                    AeroMap.Children.Remove(targetPin);
+                }
+
                 targetLocation = new Location(targetLatitude, targetLongitude);
-                Pushpin targetPin = new Pushpin();
+                targetPin = new Pushpin();
                 targetPin.Location = targetLocation;
                 AeroMap.Children.Add(targetPin);
+                targetLocationHasBeenSet = true;
 
+                MessageBox.Show("Target's location has been saved", "Location saved", MessageBoxButton.OK);
             }
             else
             {
