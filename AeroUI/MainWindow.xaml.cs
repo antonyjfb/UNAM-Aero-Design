@@ -69,10 +69,8 @@ namespace AeroUI
         {
             InitializeComponent();
             OcultarLabel();
-            PnHome.Visibility = Visibility.Hidden;
             PnTakeOff.Visibility = Visibility.Hidden;
             PnFlightData.Visibility = Visibility.Hidden;
-            PnMaps.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
             SearchPorts();
             device.NewDataPacketReceived += device_NewDataPacketReceived; //Declaracion evento que se ejecuta cada vez que se recibe un dato
@@ -434,19 +432,15 @@ namespace AeroUI
         {
             if (Tg_Btn.IsChecked == true)
             {
-                tt_home.Visibility = Visibility.Collapsed;
                 tt_take_off.Visibility = Visibility.Collapsed;
                 tt_Flight_Data.Visibility = Visibility.Collapsed;
-                tt_location.Visibility = Visibility.Collapsed;
                 tt_settings.Visibility = Visibility.Collapsed;
                 tt_exit.Visibility = Visibility.Collapsed;
             }
             else
             {
-                tt_home.Visibility = Visibility.Visible;
                 tt_take_off.Visibility = Visibility.Visible;
                 tt_Flight_Data.Visibility = Visibility.Visible;
-                tt_location.Visibility = Visibility.Visible;
                 tt_settings.Visibility = Visibility.Visible;
                 tt_exit.Visibility = Visibility.Visible;
             }
@@ -469,19 +463,15 @@ namespace AeroUI
 
         private void LvHome_Selected(object sender, RoutedEventArgs e)
         {
-            PnHome.Visibility = Visibility.Visible;
             PnTakeOff.Visibility = Visibility.Hidden;
             PnFlightData.Visibility = Visibility.Hidden;
-            PnMaps.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
         }
 
         private void LvTakeOff_Selected(object sender, RoutedEventArgs e)
         {
             PnTakeOff.Visibility = Visibility.Visible;
-            PnHome.Visibility = Visibility.Hidden;
             PnFlightData.Visibility = Visibility.Hidden;
-            PnMaps.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
         }
 
@@ -489,27 +479,21 @@ namespace AeroUI
         {
             PnFlightData.Visibility = Visibility.Visible;
             PnTakeOff.Visibility = Visibility.Hidden;
-            PnHome.Visibility = Visibility.Hidden;
-            PnMaps.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
         }
 
         private void LvMaps_Selected(object sender, RoutedEventArgs e)
         {
-            PnMaps.Visibility = Visibility.Visible;
             PnFlightData.Visibility = Visibility.Hidden;
             PnTakeOff.Visibility = Visibility.Hidden;
-            PnHome.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
         }
 
         private void LvSettings_Selected(object sender, RoutedEventArgs e)
         {
             PnSettings.Visibility = Visibility.Visible;
-            PnMaps.Visibility = Visibility.Hidden;
             PnFlightData.Visibility = Visibility.Hidden;
             PnTakeOff.Visibility = Visibility.Hidden;
-            PnHome.Visibility = Visibility.Hidden;
         }
 
         private void LvSettings1_Selected(object sender, RoutedEventArgs e)

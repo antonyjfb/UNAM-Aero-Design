@@ -8,11 +8,11 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="600" 
-        Width="800"
+        Width="1200"
         ResizeMode="NoResize"
         Topmost="True"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
         <!--//Toggle Button Style Templete-->
         <ImageBrush x:Key="tb_mouse_over"
@@ -103,9 +103,9 @@
                                 Stretch="Fill"/>
                 </Grid.Background>
 
-                <!--PANEL HOME-->
-                <StackPanel x:Name="PnHome" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL HOME-->
+                <!--PANEL TAKE OFF-->
+                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
+                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL TAKE OFF-->
                     <!--GroupBox para PRIMARY AIRCRAFT DATA-->
                     <GroupBox Header="Primary Aircraft Data" Height="170" Margin="0,-10,421,0" Foreground="White" FontSize="20">
                         <Grid>
@@ -126,21 +126,21 @@
                             <Label x:Name="lblRecTime" Content="RecTime" HorizontalAlignment="Left" Margin="166,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="30" RenderTransformOrigin="0.586,-0.588"/>
                             <Button x:Name="btnRecord" Content="Record" HorizontalAlignment="Left" Margin="101,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="startRecording" Height="31
                                     " Width="80" FontSize="15" BorderBrush="#FF98CF79" Background="#FF89D690"/>
-                            
+
                         </Grid>
                     </GroupBox>
 
                     <Label x:Name="lblDistanceToTarget" Content="Distancia: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,45,550,0" Foreground="Pink" FontSize="25"/>
 
-                </StackPanel>
 
-                <!--PANEL TAKE OFF-->
-                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    <TextBlock Margin="250,130,250,50" Foreground="BlueViolet" FontSize="30" Text="PANEL TAKE OFF"/>
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL TAKE OFF-->
-
-
-
+                    <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
+                        <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="339,-352,-196,-154">
+                            <m:Pushpin x:Name="aircraft_pin"/>
+                            <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
+                            <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
+                        </m:Map>
+                    </Grid>
 
                 </StackPanel>
 
@@ -156,19 +156,12 @@
 
                 </StackPanel>
 
-                <!--PANEL Maps -->
+                <!--PANEL Maps --><!--
                 <StackPanel x:Name="PnMaps" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    <!-- <TextBlock Margin="250,130,250,50" Foreground="Aqua" FontSize="30" Text="PANEL MAPS"/> -->
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL MAPS-->
-                    <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
-                        <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15">
-                            <m:Pushpin x:Name="aircraft_pin"/>
-                            <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
-                            <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
-                        </m:Map>
-                    </Grid>
-                </StackPanel>
+                    --><!-- <TextBlock Margin="250,130,250,50" Foreground="Aqua" FontSize="30" Text="PANEL MAPS"/> -->
+                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL MAPS--><!--
+
+                </StackPanel>-->
 
                 <!--PANEL Settings -->
                 <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
@@ -301,29 +294,6 @@
                               Background="Transparent"
                               BorderBrush="Transparent"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <!-- Home-->
-                        <ListViewItem x:Name="LvHome" HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvHome_Selected"
-                                      >
-                            <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                <Image Source="Assets/Home.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-                                <TextBlock Text="Home"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-                            </StackPanel>
-
-                            <!--ToolTip-->
-                            <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_home"
-                                         Content="Home"
-                                         Style="{StaticResource tt_style}"/>
-
-                            </ListViewItem.ToolTip>
-                        </ListViewItem>
                         <!--    Take Off    -->
                         <ListViewItem x:Name="LvTakeOff" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvTakeOff_Selected"
@@ -347,6 +317,29 @@
 
                             </ListViewItem.ToolTip>
                         </ListViewItem>
+                            <!--Take Off    
+                        <ListViewItem x:Name="LvTakeOff" HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvTakeOff_Selected"
+                                      >
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="Assets/take_off.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+                                <TextBlock Text="Take Off"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}"/>
+                            </StackPanel>
+
+                            ToolTip
+                            <ListViewItem.ToolTip>
+                                <ToolTip x:Name="tt_take_off"
+                                         Content="Take Off"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+                        </ListViewItem>-->
 
                         <!-- Flight Data-->
                         <ListViewItem x:Name="LvFlightData" HorizontalAlignment="Left"
@@ -372,7 +365,7 @@
                             </ListViewItem.ToolTip>
                         </ListViewItem>
 
-                        <!--Maps-->
+                        <!--Maps--><!--
                         <ListViewItem x:Name="LvMaps" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvMaps_Selected"
                                       >
@@ -387,14 +380,14 @@
                                            Style="{StaticResource font_style}"/>
                             </StackPanel>
 
-                            <!--ToolTip-->
+                            --><!--ToolTip--><!--
                             <ListViewItem.ToolTip>
                                 <ToolTip x:Name="tt_location"
                                          Content="Location"
                                          Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
-                        </ListViewItem>
+                        </ListViewItem>-->
 
                         <!--Settings-->
                         <ListViewItem x:Name="LvSettings" HorizontalAlignment="Left"
