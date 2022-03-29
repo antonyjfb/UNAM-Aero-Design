@@ -149,7 +149,7 @@
                     <TextBlock x:Name="PanelFlightData" Margin="250,130,50,50" Foreground="Azure" FontSize="15" Text="PANEL Flight Data" />
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Flight Data-->
 
-
+                    <Button x:Name="searchFlightFileButton" Content="Search" Width="100" Click="searchFlightFile"/>
                     <TextBox Grid.Row="1" Grid.Column="5" Text ="{Binding Value, ElementName = 
 								 PlayBackSlider, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" Width="300"/>
                     <Slider Grid.Row="2" Grid.Column="5" Minimum ="1" Maximum="28" x:Name="PlayBackSlider"
