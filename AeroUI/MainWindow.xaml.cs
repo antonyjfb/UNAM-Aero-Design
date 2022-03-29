@@ -50,6 +50,9 @@ namespace AeroUI
 
         //private Thread threadUI;
 
+        // Play back
+        private List<string> playBackData = new List<string>();
+
         // GPS
         bool firstLocationDataHasBeenSet = false;
         bool targetLocationHasBeenSet = false;
@@ -78,6 +81,8 @@ namespace AeroUI
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
             AeroMap.Mode = new AerialMode();
+
+            setSliderProperties();
 
         }
         private void setLastNumberOfFlight()
@@ -531,6 +536,29 @@ namespace AeroUI
                 ON = true;
             }
             
+        }
+
+        private void setSliderProperties()
+        {
+            using( var reader = new StreamReader(@"../../Flights/22_03_19/22_03_19-flight1.csv"))
+            {
+                while(!reader.EndOfStream)
+                {
+                    playBackData.Add(reader.ReadLine());
+                }
+            }
+
+            PlayBackSlider.Minimum = 0;
+            PlayBackSlider.Maximum = playBackData.Count - 1;
+
+        }
+
+        private void showPlayBackData(object sender, RoutedEventArgs e)
+        {
+            if(playBackData.Count > 0)
+            {
+                PanelFlightData.Text = playBackData[(int)PlayBackSlider.Value];
+            }
         }
 
     }
