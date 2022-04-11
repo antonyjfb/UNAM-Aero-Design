@@ -42,7 +42,7 @@ namespace AeroUI {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 99 "..\..\MainWindow.xaml"
+        #line 98 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid BG;
         
@@ -50,7 +50,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 101 "..\..\MainWindow.xaml"
+        #line 100 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Media.ImageBrush img_bg;
         
@@ -58,7 +58,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 107 "..\..\MainWindow.xaml"
+        #line 105 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel PnTakeOff;
         
@@ -66,7 +66,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 112 "..\..\MainWindow.xaml"
+        #line 110 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lbl_Lat;
         
@@ -74,7 +74,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 113 "..\..\MainWindow.xaml"
+        #line 111 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lbl_Long;
         
@@ -82,7 +82,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 114 "..\..\MainWindow.xaml"
+        #line 112 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lbl_Speed;
         
@@ -90,7 +90,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 115 "..\..\MainWindow.xaml"
+        #line 113 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblLat;
         
@@ -98,7 +98,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 116 "..\..\MainWindow.xaml"
+        #line 114 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblLong;
         
@@ -106,7 +106,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 117 "..\..\MainWindow.xaml"
+        #line 115 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblSpeed;
         
@@ -114,7 +114,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 118 "..\..\MainWindow.xaml"
+        #line 116 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lbl_Alt;
         
@@ -122,7 +122,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 119 "..\..\MainWindow.xaml"
+        #line 117 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblAlt;
         
@@ -130,7 +130,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 123 "..\..\MainWindow.xaml"
+        #line 121 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.GroupBox Record_Flight_Data;
         
@@ -138,7 +138,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 125 "..\..\MainWindow.xaml"
+        #line 123 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lbl_RecTime;
         
@@ -146,7 +146,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 126 "..\..\MainWindow.xaml"
+        #line 124 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblRecTime;
         
@@ -154,7 +154,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 127 "..\..\MainWindow.xaml"
+        #line 125 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnRecord;
         
@@ -162,7 +162,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 133 "..\..\MainWindow.xaml"
+        #line 131 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label lblDistanceToTarget;
         
@@ -170,7 +170,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 138 "..\..\MainWindow.xaml"
+        #line 136 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Microsoft.Maps.MapControl.WPF.Map AeroMap;
         
@@ -178,7 +178,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 139 "..\..\MainWindow.xaml"
+        #line 137 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Microsoft.Maps.MapControl.WPF.Pushpin aircraft_pin;
         
@@ -186,7 +186,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 140 "..\..\MainWindow.xaml"
+        #line 138 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Microsoft.Maps.MapControl.WPF.MapPolyline lineFromAircraftToTarget;
         
@@ -194,7 +194,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 141 "..\..\MainWindow.xaml"
+        #line 139 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Microsoft.Maps.MapControl.WPF.MapPolyline aircraftRoute;
         
@@ -202,7 +202,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 148 "..\..\MainWindow.xaml"
+        #line 147 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel PnFlightData;
         
@@ -210,7 +210,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 167 "..\..\MainWindow.xaml"
+        #line 160 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel PnSettings;
         
@@ -218,7 +218,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 170 "..\..\MainWindow.xaml"
+        #line 163 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox comboBox1;
         
@@ -226,7 +226,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 171 "..\..\MainWindow.xaml"
+        #line 164 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Conexion;
         
@@ -234,7 +234,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 173 "..\..\MainWindow.xaml"
+        #line 166 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Buscar;
         
@@ -242,7 +242,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 177 "..\..\MainWindow.xaml"
+        #line 170 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox LatitudeTextBox;
         
@@ -250,7 +250,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 179 "..\..\MainWindow.xaml"
+        #line 172 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox LongitudeTextBox;
         
@@ -258,7 +258,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 180 "..\..\MainWindow.xaml"
+        #line 173 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button setTargetButton;
         
@@ -266,7 +266,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 202 "..\..\MainWindow.xaml"
+        #line 181 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid nav_pnl;
         
@@ -274,7 +274,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 206 "..\..\MainWindow.xaml"
+        #line 185 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel st_pnl;
         
@@ -282,7 +282,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 236 "..\..\MainWindow.xaml"
+        #line 215 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Primitives.ToggleButton Tg_Btn;
         
@@ -290,7 +290,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 255 "..\..\MainWindow.xaml"
+        #line 234 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Media.Animation.Storyboard HideStackPanel;
         
@@ -298,7 +298,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 269 "..\..\MainWindow.xaml"
+        #line 248 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Media.Animation.Storyboard ShowStackPanel;
         
@@ -306,7 +306,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 293 "..\..\MainWindow.xaml"
+        #line 265 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListView LV;
         
@@ -314,7 +314,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 298 "..\..\MainWindow.xaml"
+        #line 270 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListViewItem LvTakeOff;
         
@@ -322,7 +322,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 314 "..\..\MainWindow.xaml"
+        #line 286 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ToolTip tt_take_off;
         
@@ -330,7 +330,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 345 "..\..\MainWindow.xaml"
+        #line 294 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListViewItem LvFlightData;
         
@@ -338,7 +338,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 361 "..\..\MainWindow.xaml"
+        #line 310 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ToolTip tt_Flight_Data;
         
@@ -346,7 +346,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 393 "..\..\MainWindow.xaml"
+        #line 318 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListViewItem LvSettings;
         
@@ -354,7 +354,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 409 "..\..\MainWindow.xaml"
+        #line 334 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ToolTip tt_settings;
         
@@ -362,7 +362,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 417 "..\..\MainWindow.xaml"
+        #line 342 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListViewItem LvSettings1;
         
@@ -370,7 +370,7 @@ namespace AeroUI {
         #line hidden
         
         
-        #line 433 "..\..\MainWindow.xaml"
+        #line 358 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ToolTip tt_exit;
         
@@ -410,7 +410,7 @@ namespace AeroUI {
             case 1:
             this.BG = ((System.Windows.Controls.Grid)(target));
             
-            #line 99 "..\..\MainWindow.xaml"
+            #line 98 "..\..\MainWindow.xaml"
             this.BG.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.BG_PreviewMouseLeftButtonDown);
             
             #line default
@@ -458,7 +458,7 @@ namespace AeroUI {
             case 15:
             this.btnRecord = ((System.Windows.Controls.Button)(target));
             
-            #line 127 "..\..\MainWindow.xaml"
+            #line 125 "..\..\MainWindow.xaml"
             this.btnRecord.Click += new System.Windows.RoutedEventHandler(this.startRecording);
             
             #line default
@@ -491,7 +491,7 @@ namespace AeroUI {
             case 24:
             this.Conexion = ((System.Windows.Controls.Button)(target));
             
-            #line 171 "..\..\MainWindow.xaml"
+            #line 164 "..\..\MainWindow.xaml"
             this.Conexion.Click += new System.Windows.RoutedEventHandler(this.Conexion_Click);
             
             #line default
@@ -500,7 +500,7 @@ namespace AeroUI {
             case 25:
             this.Buscar = ((System.Windows.Controls.Button)(target));
             
-            #line 173 "..\..\MainWindow.xaml"
+            #line 166 "..\..\MainWindow.xaml"
             this.Buscar.Click += new System.Windows.RoutedEventHandler(this.Buscar_Click);
             
             #line default
@@ -515,7 +515,7 @@ namespace AeroUI {
             case 28:
             this.setTargetButton = ((System.Windows.Controls.Button)(target));
             
-            #line 180 "..\..\MainWindow.xaml"
+            #line 173 "..\..\MainWindow.xaml"
             this.setTargetButton.Click += new System.Windows.RoutedEventHandler(this.setTargetLocation);
             
             #line default
@@ -530,13 +530,13 @@ namespace AeroUI {
             case 31:
             this.Tg_Btn = ((System.Windows.Controls.Primitives.ToggleButton)(target));
             
-            #line 244 "..\..\MainWindow.xaml"
+            #line 223 "..\..\MainWindow.xaml"
             this.Tg_Btn.Unchecked += new System.Windows.RoutedEventHandler(this.Tg_Btn_Unchecked);
             
             #line default
             #line hidden
             
-            #line 244 "..\..\MainWindow.xaml"
+            #line 223 "..\..\MainWindow.xaml"
             this.Tg_Btn.Checked += new System.Windows.RoutedEventHandler(this.Tg_Btn_Checked);
             
             #line default
@@ -554,13 +554,13 @@ namespace AeroUI {
             case 35:
             this.LvTakeOff = ((System.Windows.Controls.ListViewItem)(target));
             
-            #line 299 "..\..\MainWindow.xaml"
+            #line 271 "..\..\MainWindow.xaml"
             this.LvTakeOff.MouseEnter += new System.Windows.Input.MouseEventHandler(this.ListViewItem_MouseEnter);
             
             #line default
             #line hidden
             
-            #line 299 "..\..\MainWindow.xaml"
+            #line 271 "..\..\MainWindow.xaml"
             this.LvTakeOff.Selected += new System.Windows.RoutedEventHandler(this.LvTakeOff_Selected);
             
             #line default
@@ -572,13 +572,13 @@ namespace AeroUI {
             case 37:
             this.LvFlightData = ((System.Windows.Controls.ListViewItem)(target));
             
-            #line 346 "..\..\MainWindow.xaml"
+            #line 295 "..\..\MainWindow.xaml"
             this.LvFlightData.MouseEnter += new System.Windows.Input.MouseEventHandler(this.ListViewItem_MouseEnter);
             
             #line default
             #line hidden
             
-            #line 346 "..\..\MainWindow.xaml"
+            #line 295 "..\..\MainWindow.xaml"
             this.LvFlightData.Selected += new System.Windows.RoutedEventHandler(this.LvFlightData_Selected);
             
             #line default
@@ -590,13 +590,13 @@ namespace AeroUI {
             case 39:
             this.LvSettings = ((System.Windows.Controls.ListViewItem)(target));
             
-            #line 394 "..\..\MainWindow.xaml"
+            #line 319 "..\..\MainWindow.xaml"
             this.LvSettings.MouseEnter += new System.Windows.Input.MouseEventHandler(this.ListViewItem_MouseEnter);
             
             #line default
             #line hidden
             
-            #line 394 "..\..\MainWindow.xaml"
+            #line 319 "..\..\MainWindow.xaml"
             this.LvSettings.Selected += new System.Windows.RoutedEventHandler(this.LvSettings_Selected);
             
             #line default
@@ -608,13 +608,13 @@ namespace AeroUI {
             case 41:
             this.LvSettings1 = ((System.Windows.Controls.ListViewItem)(target));
             
-            #line 418 "..\..\MainWindow.xaml"
+            #line 343 "..\..\MainWindow.xaml"
             this.LvSettings1.MouseEnter += new System.Windows.Input.MouseEventHandler(this.ListViewItem_MouseEnter);
             
             #line default
             #line hidden
             
-            #line 418 "..\..\MainWindow.xaml"
+            #line 343 "..\..\MainWindow.xaml"
             this.LvSettings1.Selected += new System.Windows.RoutedEventHandler(this.LvSettings1_Selected);
             
             #line default
