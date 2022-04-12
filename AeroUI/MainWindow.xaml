@@ -155,22 +155,162 @@
                 <!--ENDREGION-->
 
                 <!--PANEL Settings -->
-                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735">
+                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="660" Margin="65,40,0,0" Width="1135" >
+                    <!--REGION CONTENIDO-->
+                    <Grid x:Name="GridSettings"
+                          HorizontalAlignment="Left"                        
+                          Height="660"
+                          Width="1135"
+                          Margin="0,0,0,0"
+                          Background="#81c784">
+                        <!--REGION COLS & ROWS-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="274*"/>
+                            <ColumnDefinition Width="274"/>
+                            <ColumnDefinition Width="274*"/>
+                            <ColumnDefinition Width="274*"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <!--ENDREGION-->
+                        
+                        <!--REGION TITULO-->
+                        <TextBlock Grid.Row="0"
+                          Grid.ColumnSpan="6"
+                          Text="Settings"
+                          Foreground="Black"
+                          FontSize="45"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+                        <!--ENDREGION-->
+                        
+                        <!--REGION PUERTO-->
+                        <!--REGION TEXTO LATITUD-->
+                        <TextBlock                           
+                            Text="Latitude"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            FontSize="35"
+                            Margin="0,0,10,0"/>
+                        <!--ENDREGION-->
 
-                    <Grid Height="600">
-                        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="388,70,-192,0" VerticalAlignment="Top" Width="120"/>
-                        <Button x:Name="BtnConexion" Content="Connect" HorizontalAlignment="Left" Margin="414,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="BtnConexion_Click" Width="94" Height="26"/>
-                        <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Settings-->
-                        <Button x:Name="Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="582,72,-328,0" VerticalAlignment="Top" Click="Buscar_Click"/>
+                        <!--REGION TEXTBOX LATITUD-->
+                        <TextBox
+                          x:Name="LatitudeTextBox"
+                          TextAlignment="Center"          
+                          Background="Transparent"
+                          BorderBrush="#519657"
+                          Grid.Column="2"
+                          Grid.Row="2"
+                          FontSize="20"/>
+                        <!--ENDREGION-->
 
-                        <!-- Para indicar el objetivo -->
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,200,-320,0" Foreground="White" FontSize="20">Latitud:</Label>
-                        <TextBox x:Name="LatitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,210,-320,0" Width="120"/>
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,220,-320,0" Foreground="White" FontSize="20">Longitud:</Label>
-                        <TextBox x:Name="LongitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,230,-320,0" Width="120"/>
-                        <Button x:Name="setTargetButton" Content="Establecer objetivo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,300,-320,0" Click="setTargetLocation"/>
+                        <!--REGION TEXTO LONGITUD-->
+                        <TextBlock Text="Longitude"
+                          HorizontalAlignment="Right"
+                          VerticalAlignment="Center"
+                          Grid.Column="3"
+                          Grid.Row="2"
+                          FontSize="35"
+                          Margin="0,0,10,0"/>
+                        <!--ENDREGION-->
+
+                        <!--REGION TEXTBOX LONGITUD-->
+                        <TextBox 
+                            x:Name="LongitudeTextBox"
+                            TextAlignment="Center"          
+                            Background="Transparent"
+                            BorderBrush="#519657"
+                            Grid.Column="4"
+                            Grid.Row="2"
+                            FontSize="20"/>
+                        <!--ENDREGION-->
+
+                        <!--REGION BTN ESTABLECER OBJETIVO-->
+                        <Button
+                            x:Name="btnSetTarget"
+                            Grid.Row="4"
+                            Background="#519657"
+                            BorderBrush="#FF98CF79"
+                            Cursor="Hand"
+                            Width="170"                         
+                            HorizontalAlignment="Center"                       
+                            Grid.Column="2" Margin="194,10,184,0" Grid.ColumnSpan="2" Click="btnSetTarget_Click">
+                            <TextBlock Text="Set Target"
+                            Foreground="White"
+                            FontSize="25"/>
+                        </Button>
+                        <!--ENDREGION-->
+
+                        <!--REGION TEXTO PUERTO-->
+                        <TextBlock 
+                            Text="Serial Ports"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            Grid.Row="6"
+                            FontSize="35"
+                            Margin="0,0,10,0"/>
+                        <!--ENDREGION-->
+                        <!--REGION ComboBox PUERTO-->
+                        <ComboBox
+                            x:Name="CmbPorts"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Grid.Column="2"
+                            Grid.Row="6"
+                            FontSize="35"
+                            Margin="25,5,25,5"
+                            Width="224"/>
+                        <!--ENDREGION-->
+
+                        <!--REGION BTN ESTABLECER OBJETIVO-->
+                        <Button
+                            x:Name="BtnBuscar"
+                            Background="#bbdefd"
+                            BorderBrush="#bbdefd"
+                            Grid.Column="3"
+                            Grid.Row="6"
+                            Cursor="Hand"
+                            Width="140"
+                            Margin="-100,5,5,255" Grid.RowSpan="2" Click="BtnBuscar_Click">
+                            <TextBlock Text="Search"
+                              Foreground="White"
+                              FontSize="25"/>
+                        </Button>
+                        <!--ENDREGION-->
+
+                        <!--REGION BTN ESTABLECER OBJETIVO-->
+                        <Button
+                            x:Name="BtnConexion"
+                            Grid.Row="7"
+                            Background="#ce93d8"
+                            BorderBrush="#ce93d8"
+                            Cursor="Hand"
+                            Width="170"                          
+                            HorizontalAlignment="Center"                    
+                            Grid.Column="2" Margin="30,50,74,145"
+                            Click="BtnConexion_Click">
+                            <TextBlock Text="Connect"
+                              Foreground="White"
+                              FontSize="25"/>
+                        </Button>
+                        <!--ENDREGION-->
 
                     </Grid>
+                    <!--ENDREGION-->
                 </StackPanel>
                 <!--ENDREGION-->
             </Grid>

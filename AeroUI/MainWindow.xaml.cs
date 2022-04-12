@@ -267,38 +267,6 @@ namespace AeroUI
             };
         }
 
-        private void setTargetLocation(object sender, RoutedEventArgs e)
-        {
-            targetLatitude_String = LatitudeTextBox.Text;
-            targetLongitude_String = LongitudeTextBox.Text;
-            bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
-            bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
-            bool targetLocationIsValid = targetLatitudeIsValid && targetLongitudeIsValid;
-
-            if(targetLocationIsValid)
-            {
-                if(AeroMap.Children.Contains(targetPin))
-                {
-                    Console.WriteLine("== El mapa ya tiene un pin para el objetivo, que se procede a eliminar para colocar uno nuevo ==");
-                    AeroMap.Children.Remove(targetPin);
-                }
-
-                targetLocation = new Location(targetLatitude, targetLongitude);
-                targetPin = new Pushpin();
-                targetPin.Location = targetLocation;
-                AeroMap.Children.Add(targetPin);
-                targetLocationHasBeenSet = true;
-
-                MessageBox.Show("Target's location has been saved", "Location saved", MessageBoxButton.OK);
-            }
-            else
-            {
-                Console.WriteLine("Hubo un problema al establecer la ubicación del objetivo");
-
-                MessageBox.Show("Target's location cannot be saved", "Unable to save", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void OcultarLabel()
         {
             lblLat.Visibility = Visibility.Hidden;
@@ -332,7 +300,7 @@ namespace AeroUI
         {
             try
             {
-                string puerto = comboBox1.SelectedItem.ToString();
+                string puerto = CmbPorts.SelectedItem.ToString();
                 device.OpenConnection(puerto);
                 device.BeginDataFlow();
 
@@ -348,17 +316,17 @@ namespace AeroUI
             }
         }
 
-        private void Buscar_Click(object sender, RoutedEventArgs e)
+        private void BtnBuscar_Click(object sender, RoutedEventArgs e)
         {
             SearchPorts();
         }
         private void SearchPorts()
         {
-            comboBox1.Items.Clear();
+            CmbPorts.Items.Clear();
             string[] puertos = SerialPort.GetPortNames();
             foreach (string puerto in puertos)
             {
-                comboBox1.Items.Add(puerto);
+                CmbPorts.Items.Add(puerto);
             }
         }
 
@@ -517,7 +485,7 @@ namespace AeroUI
             if (!toogle)
             {
                 AbrirConexion();
-                BtnConexion.Content = "Disconnec";
+                BtnConexion.Content = "Disconnect";
                 txtConnection.Text = "Connected";
                 MostrarLabel();
             }
@@ -529,5 +497,39 @@ namespace AeroUI
             }
             toogle = !toogle;
         }
+
+        private void btnSetTarget_Click(object sender, RoutedEventArgs e)
+        {
+            targetLatitude_String = LatitudeTextBox.Text;
+            targetLongitude_String = LongitudeTextBox.Text;
+            bool targetLatitudeIsValid = double.TryParse(targetLatitude_String, out targetLatitude);
+            bool targetLongitudeIsValid = double.TryParse(targetLongitude_String, out targetLongitude);
+            bool targetLocationIsValid = targetLatitudeIsValid && targetLongitudeIsValid;
+
+            if (targetLocationIsValid)
+            {
+                if (AeroMap.Children.Contains(targetPin))
+                {
+                    Console.WriteLine("== El mapa ya tiene un pin para el objetivo, que se procede a eliminar para colocar uno nuevo ==");
+                    AeroMap.Children.Remove(targetPin);
+                }
+
+                targetLocation = new Location(targetLatitude, targetLongitude);
+                targetPin = new Pushpin();
+                targetPin.Location = targetLocation;
+                AeroMap.Children.Add(targetPin);
+                targetLocationHasBeenSet = true;
+
+                MessageBox.Show("Target's location has been saved", "Location saved", MessageBoxButton.OK);
+            }
+            else
+            {
+                Console.WriteLine("Hubo un problema al establecer la ubicación del objetivo");
+
+                MessageBox.Show("Target's location cannot be saved", "Unable to save", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
     }
 }
