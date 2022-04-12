@@ -9,7 +9,7 @@
         Title="UNAM AERO DESIGN" 
         Height="700" 
         Width="1200"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         Topmost="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen" Icon="AEROLOGOPEQUEÑO.png">
@@ -143,13 +143,16 @@
 
                 <!--PANEL Flight Data-->
                 <StackPanel x:Name="PnFlightData" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    <TextBlock Margin="250,130,250,50" Foreground="Azure" FontSize="30" Text="PANEL Flight Data"/>
+                    <TextBlock x:Name="PanelFlightData" Margin="250,130,50,50" Foreground="Azure" FontSize="15" Text="PANEL Flight Data" />
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Flight Data-->
 
-
-
-
-
+                    <Button x:Name="searchFlightFileButton" Content="Search" Width="100" Click="searchFlightFile"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" Text ="{Binding Value, ElementName = 
+								 PlayBackSlider, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" Width="300"/>
+                    <Slider Grid.Row="2" Grid.Column="5" Minimum ="1" Maximum="28" x:Name="PlayBackSlider"
+								HorizontalAlignment="Left" VerticalAlignment="Top"
+                                IsSnapToTickEnabled="True" TickFrequency="1" Width="200" Height="30" Grid.ColumnSpan="3" ValueChanged="showPlayBackData"/>
+                    
 
                 </StackPanel>
                 <!--ENDREGION-->

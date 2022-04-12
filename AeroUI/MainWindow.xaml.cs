@@ -19,6 +19,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.IO;
 using Microsoft.Maps.MapControl.WPF;
+using Microsoft.Win32;
 
 namespace AeroUI
 {
@@ -49,6 +50,9 @@ namespace AeroUI
         bool ON = true;
 
         //private Thread threadUI;
+
+        // Play back
+        private List<string> playBackData = new List<string>();
 
         // GPS
         bool firstLocationDataHasBeenSet = false;
@@ -527,6 +531,75 @@ namespace AeroUI
                 Console.WriteLine("Hubo un problema al establecer la ubicación del objetivo");
 
                 MessageBox.Show("Target's location cannot be saved", "Unable to save", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+        }
+
+        private void searchFlightFile(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog()
+            {
+                Title = "Search and ppen the flight csv",
+                Filter = "csv files (*csv)|*.csv",
+                InitialDirectory = Directory.GetCurrentDirectory()
+            };
+
+            Console.WriteLine("CURRENT DIRECTORY: " + Directory.GetCurrentDirectory());
+
+            if(open.ShowDialog() == true)
+            {
+                string filePath = open.FileName;
+
+                Console.WriteLine("PLAYBACK FILE: " + filePath);
+
+                using (var reader = new StreamReader(filePath))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        playBackData.Add(reader.ReadLine());
+                    }
+
+                    PlayBackSlider.Minimum = 1;
+
+                    PlayBackSlider.Maximum = playBackData.Count;
+                }
+            }
+
+            /*
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.InitialDirectory = @"../../Flights/";
+            openFileDialog.Filter = "csv files (*csv)|*.txt";
+            openFileDialog.DefaultExt = ".csv";
+            openFileDialog.Multiselect = false;
+            bool? dialogOK = openFileDialog.ShowDialog();
+
+            if(dialogOK == true)
+            {
+                string filePath = openFileDialog.FileName;
+
+                Console.WriteLine("PLAYBACK FILE: " + filePath);
+
+                using (var reader = new StreamReader(filePath))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        playBackData.Add(reader.ReadLine());
+                    }
+                }
+
+                PlayBackSlider.Minimum = 1;
+                PlayBackSlider.Maximum = playBackData.Count;
+            }
+            */
+
+        }
+
+        private void showPlayBackData(object sender, RoutedEventArgs e)
+        {
+            if(playBackData.Count > 0)
+            {
+                PanelFlightData.Text = playBackData[(int)PlayBackSlider.Value - 1];
             }
         }
 
