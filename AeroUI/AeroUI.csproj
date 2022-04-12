@@ -133,5 +133,14 @@
   <ItemGroup>
     <Resource Include="Assets\Aero.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AEROLOGOPEQUEÑO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\usb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\minimize.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

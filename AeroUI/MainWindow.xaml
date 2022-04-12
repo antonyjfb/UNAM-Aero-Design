@@ -6,13 +6,15 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:local="clr-namespace:AeroUI"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="600" 
+        Title="UNAM AERO DESIGN" 
+        Height="700" 
         Width="1200"
         ResizeMode="NoResize"
         Topmost="True"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        WindowStartupLocation="CenterScreen" Icon="AEROLOGOPEQUEÑO.png">
+
+    <!--REGION RECURSOS-->
     <Window.Resources>
         <!--//Toggle Button Style Templete-->
         <ImageBrush x:Key="tb_mouse_over"
@@ -29,8 +31,6 @@
                     Value="White"/>
             <Setter Property="FontSize"
                     Value="20"/>
-
-
         </Style>
         <!-- Tooltip Style Templete -->
         <Style TargetType="ToolTip" x:Key="tt_style">
@@ -50,8 +50,6 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
 
         </Style>
-
-
 
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
@@ -81,14 +79,12 @@
                                         Value="{StaticResource tb_mouse_over}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
         </Style>
-
     </Window.Resources>
+    <!--ENDREGION-->
 
 
 
@@ -104,7 +100,7 @@
                 </Grid.Background>
 
                 <!--PANEL TAKE OFF-->
-                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
+                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735" Visibility="Hidden">
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL TAKE OFF-->
                     <!--GroupBox para PRIMARY AIRCRAFT DATA-->
                     <GroupBox Header="Primary Aircraft Data" Height="170" Margin="0,-10,421,0" Foreground="White" FontSize="20">
@@ -143,6 +139,7 @@
                     </Grid>
 
                 </StackPanel>
+                <!--ENDREGION-->
 
                 <!--PANEL Flight Data-->
                 <StackPanel x:Name="PnFlightData" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
@@ -155,54 +152,94 @@
 
 
                 </StackPanel>
-
-                <!--PANEL Maps --><!--
-                <StackPanel x:Name="PnMaps" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    --><!-- <TextBlock Margin="250,130,250,50" Foreground="Aqua" FontSize="30" Text="PANEL MAPS"/> -->
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL MAPS--><!--
-
-                </StackPanel>-->
+                <!--ENDREGION-->
 
                 <!--PANEL Settings -->
-                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
+                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735">
 
                     <Grid Height="600">
                         <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="388,70,-192,0" VerticalAlignment="Top" Width="120"/>
-                        <Button x:Name="Conexion" Content="Abrir/Cerrar Conexión" HorizontalAlignment="Left" Margin="414,128,-312,-24" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="Conexion_Click" Width="214"/>
+                        <Button x:Name="BtnConexion" Content="Connect" HorizontalAlignment="Left" Margin="414,122,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.266,0.77" Click="BtnConexion_Click" Width="94" Height="26"/>
                         <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Settings-->
                         <Button x:Name="Buscar" Content="Buscar" HorizontalAlignment="Left" Margin="582,72,-328,0" VerticalAlignment="Top" Click="Buscar_Click"/>
-                        
+
                         <!-- Para indicar el objetivo -->
-                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,200,-320,0" Foreground="White" FontSize="20"> Latitud: </Label>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,200,-320,0" Foreground="White" FontSize="20">Latitud:</Label>
                         <TextBox x:Name="LatitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,210,-320,0" Width="120"/>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,220,-320,0" Foreground="White" FontSize="20">Longitud:</Label>
                         <TextBox x:Name="LongitudeTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="390,230,-320,0" Width="120"/>
                         <Button x:Name="setTargetButton" Content="Establecer objetivo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,300,-320,0" Click="setTargetLocation"/>
 
                     </Grid>
-
-
-
-
                 </StackPanel>
-
-
-
-
-
-
-
-
+                <!--ENDREGION-->
             </Grid>
 
+            <!--#REGION HEADER-->
+            <Grid x:Name="Header"
+              Height="40"
+              VerticalAlignment="Top"
+              Background="Transparent"
+              HorizontalAlignment="Left"  
+              Width="1200">
+                <Border CornerRadius="10,10,0,0"
+                      Background="#4caf50"/>
+                <Grid Margin="10,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="285"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="UNAM AeroDesign Telemetry System 2022"
+                               Grid.Column="0"
+                               Foreground="White"
+                               FontSize="15"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"/>
+                    <Grid Grid.Column="3" Margin="155,2,230,-2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Name="txtConnection"
+                               Grid.Column="0"
+                               Text="Disconnected"
+                               FontSize="15"    
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="-50,6,0,6" Grid.ColumnSpan="2" Width="115"/>
+                        <Image Name="imgConnectionStatus"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Source="Assets/usb.png"/>
+                        <!--REGION MINIMIZAR-->
+                        <Button x:Name="BtnMinimizar"
+                                Grid.Column="1"
+                                Background="Transparent"
+                                Height="35"
+                                Width="35"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Margin="0,0,-221,0" Click="BtnMinimizar_Click">
+                            <Image Source="Assets/minimize.png"
+                                   Cursor="Hand">
+                            </Image>
+                        </Button>
+                        <!--ENDREGION-->
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--ENDREGION-->
 
-
-
-
+            <!--#REGION MENU-->
             <Grid x:Name="nav_pnl"
                   HorizontalAlignment="Left"
                   Width="65"
-                  Background="#2E333A">
+                  Background="#2E333A"
+                  Margin="0,40,0,0">
+
                 <StackPanel x:Name="st_pnl">
 
                     <!--// Grid for the Menu Toggle Button-->
@@ -280,11 +317,6 @@
                                     </BeginStoryboard>
                                 </EventTrigger>
 
-
-
-
-
-
                             </ToggleButton.Triggers>
 
                         </ToggleButton>
@@ -317,29 +349,6 @@
 
                             </ListViewItem.ToolTip>
                         </ListViewItem>
-                            <!--Take Off    
-                        <ListViewItem x:Name="LvTakeOff" HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvTakeOff_Selected"
-                                      >
-                            <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                <Image Source="Assets/take_off.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-                                <TextBlock Text="Take Off"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-                            </StackPanel>
-
-                            ToolTip
-                            <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_take_off"
-                                         Content="Take Off"
-                                         Style="{StaticResource tt_style}"/>
-
-                            </ListViewItem.ToolTip>
-                        </ListViewItem>-->
 
                         <!-- Flight Data-->
                         <ListViewItem x:Name="LvFlightData" HorizontalAlignment="Left"
@@ -364,30 +373,6 @@
 
                             </ListViewItem.ToolTip>
                         </ListViewItem>
-
-                        <!--Maps--><!--
-                        <ListViewItem x:Name="LvMaps" HorizontalAlignment="Left"
-                                      Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvMaps_Selected"
-                                      >
-                            <StackPanel Orientation="Horizontal"
-                                        Width="230">
-
-                                <Image Source="Assets/location.png"
-                                       Stretch="None"
-                                       Margin="12,0,0,0"/>
-                                <TextBlock Text="Location"
-                                           Margin="25,0,0,0"
-                                           Style="{StaticResource font_style}"/>
-                            </StackPanel>
-
-                            --><!--ToolTip--><!--
-                            <ListViewItem.ToolTip>
-                                <ToolTip x:Name="tt_location"
-                                         Content="Location"
-                                         Style="{StaticResource tt_style}"/>
-
-                            </ListViewItem.ToolTip>
-                        </ListViewItem>-->
 
                         <!--Settings-->
                         <ListViewItem x:Name="LvSettings" HorizontalAlignment="Left"
@@ -471,25 +456,15 @@
 
                                                 </MultiTrigger>
                                             </ControlTemplate.Triggers>
-
-
-
-
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
                             </Style>
                         </ListView.ItemContainerStyle>
                     </ListView>
-
-
                 </StackPanel>
             </Grid>
+            <!--ENDREGION-->
         </Grid>
-
-
-
-
-
     </Grid>
 </Window>

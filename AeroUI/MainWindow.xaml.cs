@@ -299,19 +299,6 @@ namespace AeroUI
             }
         }
 
-        private void Conexion_Click(object sender, RoutedEventArgs e)
-        {
-            if(!toogle)
-            {
-                AbrirConexion();
-                MostrarLabel();
-            }
-            else
-            {
-                CerrarConexion();
-            }
-            toogle = !toogle;
-        }
         private void OcultarLabel()
         {
             lblLat.Visibility = Visibility.Hidden;
@@ -461,13 +448,6 @@ namespace AeroUI
             Tg_Btn.IsChecked = false;
         }
 
-        private void LvHome_Selected(object sender, RoutedEventArgs e)
-        {
-            PnTakeOff.Visibility = Visibility.Hidden;
-            PnFlightData.Visibility = Visibility.Hidden;
-            PnSettings.Visibility = Visibility.Hidden;
-        }
-
         private void LvTakeOff_Selected(object sender, RoutedEventArgs e)
         {
             PnTakeOff.Visibility = Visibility.Visible;
@@ -482,12 +462,6 @@ namespace AeroUI
             PnSettings.Visibility = Visibility.Hidden;
         }
 
-        private void LvMaps_Selected(object sender, RoutedEventArgs e)
-        {
-            PnFlightData.Visibility = Visibility.Hidden;
-            PnTakeOff.Visibility = Visibility.Hidden;
-            PnSettings.Visibility = Visibility.Hidden;
-        }
 
         private void LvSettings_Selected(object sender, RoutedEventArgs e)
         {
@@ -533,5 +507,27 @@ namespace AeroUI
             
         }
 
+        private void BtnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void BtnConexion_Click(object sender, RoutedEventArgs e)
+        {
+            if (!toogle)
+            {
+                AbrirConexion();
+                BtnConexion.Content = "Disconnec";
+                txtConnection.Text = "Connected";
+                MostrarLabel();
+            }
+            else
+            {
+                BtnConexion.Content = "Connect";
+                txtConnection.Text = "Disconnected";
+                CerrarConexion();
+            }
+            toogle = !toogle;
+        }
     }
 }
