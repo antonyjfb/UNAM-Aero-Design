@@ -65,3 +65,22 @@ C:\Users\pedro\OneDrive\Escritorio\UNAM AERO\Aero\UNAM-Aero-Design\AeroUI\obj\De
 C:\Users\pedro\OneDrive\Escritorio\UNAM AERO\Aero\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.CopyComplete
 C:\Users\pedro\OneDrive\Escritorio\UNAM AERO\Aero\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.exe
 C:\Users\pedro\OneDrive\Escritorio\UNAM AERO\Aero\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.pdb
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\bin\Debug\AeroUI.exe.config
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\bin\Debug\AeroUI.exe
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\bin\Debug\AeroUI.pdb
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.AssemblyReference.cache
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\MainWindow.g.cs
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\App.g.cs
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI_MarkupCompile.cache
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI_MarkupCompile.lref
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\MainWindow.baml
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.g.resources
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.Properties.Resources.resources
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.GenerateResource.cache
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.CoreCompileInputs.cache
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.csproj.CopyComplete
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.exe
+C:\Users\anton\Documents\UNAM-Aero-Design\AeroUI\obj\Debug\AeroUI.pdb
