@@ -453,15 +453,12 @@ namespace AeroUI
             if (ON)
             {
                 recordingIsAvaible = true;
-                btnRecord.Content = "Stop";
                 ON = false;
             }
             else
             {
-                btnRecord.Content = "Record";
                 recordingIsAvaible = false;
                 initialTimeHasBeenSet = false;
-                lblRecTime.Content = 0;
 
                 string currentDate = DateTime.Now.ToString("yy_MM_dd");
                 string fileName = currentDate + "-" + "flight" + numberOfFlight + ".csv";

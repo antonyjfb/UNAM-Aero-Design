@@ -9,9 +9,10 @@
         Title="UNAM AERO DESIGN" 
         Height="700" 
         Width="1200"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         Topmost="True"
         WindowStyle="None"
+        Background="Transparent"
         WindowStartupLocation="CenterScreen" Icon="AEROLOGOPEQUEÑO.png">
 
     <!--REGION RECURSOS-->
@@ -83,6 +84,65 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--#REGION FOCUSVISUAL-->
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
+        <!--#REGION HEADER-->
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="BTNHEADERSTYLE" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="10" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#4caf50"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#4caf50"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="TRANSPARENT"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="TRANSPARENT"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#ENDREGION-->
     </Window.Resources>
     <!--ENDREGION-->
 
@@ -100,8 +160,8 @@
                 </Grid.Background>
 
                 <!--PANEL TAKE OFF-->
-                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735" Visibility="Hidden">
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL TAKE OFF-->
+                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
+                    <!--REGION CONTENIDO-->
                     <!--GroupBox para PRIMARY AIRCRAFT DATA-->
                     <GroupBox Header="Primary Aircraft Data" Height="170" Margin="0,-10,421,0" Foreground="White" FontSize="20">
                         <Grid>
@@ -116,32 +176,23 @@
                         </Grid>
                     </GroupBox>
 
-                    <GroupBox x:Name="Record_Flight_Data" Height="120" Margin="0,0,421,0" Foreground="White" BorderBrush="#FF0F71AC" FontSize="20" Header="Record Flight Data">
-                        <Grid>
-                            <Label x:Name="lbl_RecTime" Content="Recording time:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
-                            <Label x:Name="lblRecTime" Content="RecTime" HorizontalAlignment="Left" Margin="166,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="30" RenderTransformOrigin="0.586,-0.588"/>
-                            <Button x:Name="btnRecord" Content="Record" HorizontalAlignment="Left" Margin="101,45,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.712,4.542" Click="startRecording" Height="31
-                                    " Width="80" FontSize="15" BorderBrush="#FF98CF79" Background="#FF89D690"/>
-
-                        </Grid>
-                    </GroupBox>
-
                     <Label x:Name="lblDistanceToTarget" Content="Distancia: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,45,550,0" Foreground="Pink" FontSize="25"/>
 
 
                     <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
                         <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="339,-352,-196,-154">
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="349,-232,-206,-274">
                             <m:Pushpin x:Name="aircraft_pin"/>
                             <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
                             <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
                         </m:Map>
                     </Grid>
+                    <!--ENDREGION-->
 
                 </StackPanel>
                 <!--ENDREGION-->
 
-                <!--PANEL Flight Data-->
+                <!--#PANEL Flight Data-->
                 <StackPanel x:Name="PnFlightData" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
                     <TextBlock x:Name="PanelFlightData" Margin="250,130,50,50" Foreground="Azure" FontSize="15" Text="PANEL Flight Data" />
                     <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Flight Data-->
@@ -152,13 +203,13 @@
                     <Slider Grid.Row="2" Grid.Column="5" Minimum ="1" Maximum="28" x:Name="PlayBackSlider"
 								HorizontalAlignment="Left" VerticalAlignment="Top"
                                 IsSnapToTickEnabled="True" TickFrequency="1" Width="200" Height="30" Grid.ColumnSpan="3" ValueChanged="showPlayBackData"/>
-                    
+
 
                 </StackPanel>
                 <!--ENDREGION-->
 
                 <!--PANEL Settings -->
-                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="660" Margin="65,40,0,0" Width="1135" >
+                <StackPanel x:Name="PnSettings" HorizontalAlignment="Left" Height="660" Margin="65,40,0,0" Width="1135" Visibility="Hidden" >
                     <!--REGION CONTENIDO-->
                     <Grid x:Name="GridSettings"
                           HorizontalAlignment="Left"                        
@@ -186,7 +237,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <!--ENDREGION-->
-                        
+
                         <!--REGION TITULO-->
                         <TextBlock Grid.Row="0"
                           Grid.ColumnSpan="6"
@@ -196,7 +247,7 @@
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"/>
                         <!--ENDREGION-->
-                        
+
                         <!--REGION PUERTO-->
                         <!--REGION TEXTO LATITUD-->
                         <TextBlock                           
@@ -339,10 +390,11 @@
                                FontSize="15"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"/>
-                    <Grid Grid.Column="3" Margin="155,2,230,-2">
+                    <Grid Grid.Column="3" Margin="100,2,230,2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Name="txtConnection"
                                Grid.Column="0"
@@ -351,12 +403,36 @@
                                Foreground="White"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Margin="-50,6,0,6" Grid.ColumnSpan="2" Width="115"/>
+                               Margin="-90,6,0,6" Grid.ColumnSpan="2" Width="90"/>
                         <Image Name="imgConnectionStatus"
-                           Grid.Column="1"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
-                           Source="Assets/usb.png"/>
+                           Source="Assets/usb.png" Margin="-83,4,82,4"/>
+                        <Button x:Name="btnRecord"
+                                Grid.Column="1"
+                                Background="Transparent"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Click="startRecording"                                
+                                Cursor="Hand" Margin="19,4,0,4" 
+                                Height="27" 
+                                Width="27" 
+                                Grid.ColumnSpan="2"
+                                Style="{DynamicResource BTNHEADERSTYLE}">
+                            <Image 
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Source="Assets/record.png" Height="30" Width="30"/>
+                        </Button>
+                        <Label x:Name="lblRecTime"
+                               Grid.Column="2"
+                               Content="00:00"
+                               FontSize="15"
+                               Foreground="White"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center" Margin="6,2,-15,4" Height="30" Width="50">
+                        </Label>
                         <!--REGION MINIMIZAR-->
                         <Button x:Name="BtnMinimizar"
                                 Grid.Column="1"
@@ -365,7 +441,8 @@
                                 Width="35"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Top"
-                                Margin="0,0,-221,0" Click="BtnMinimizar_Click">
+                                Margin="0,0,-269,0" Click="BtnMinimizar_Click" 
+                                Style="{DynamicResource BTNHEADERSTYLE}">
                             <Image Source="Assets/minimize.png"
                                    Cursor="Hand">
                             </Image>
