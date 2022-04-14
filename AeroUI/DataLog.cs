@@ -5,6 +5,7 @@ namespace AeroUI
     public class DataLog
     {
         private double latitud, longitud, velocidad, velocidadZ, altura, roll, pitch, yaw, distancia, tiempo, aceleracionX, aceleracionY, aceleracionZ; //Debe tener las mismas variables que UAV
+        private int padaLiberado;
         private string csv_line;
 
         public double Tiempo
@@ -34,6 +35,9 @@ namespace AeroUI
         public double Distancia
         { get { return distancia; } }
 
+        public int PADALiberado
+        { get { return padaLiberado; } set { padaLiberado = value; } }
+
         public string CSV_Line
         {
             get
@@ -53,7 +57,7 @@ namespace AeroUI
                     roll.ToString(),
                     pitch.ToString(),
                     yaw.ToString(),
-
+                    padaLiberado.ToString()
                 };
 
                 csv_line = string.Join(",", parameters);
@@ -78,7 +82,7 @@ namespace AeroUI
             roll = dataDevice.Roll;
             pitch = dataDevice.Pitch;
             yaw = dataDevice.Yaw;
-
+            padaLiberado = 0;
 
             // csv_line = dataDevice.CSV_Line;
         }
