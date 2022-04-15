@@ -54,6 +54,12 @@ namespace AeroUI
         // Play back
         private List<string> playBackData = new List<string>();
 
+        int playbackCurrentIndex = 0;
+        int numberOfElementsOfPlaybackData = 0;
+        bool flightIsPlayingBack = false;
+        bool playbackCSVHasBeenLoaded = false;
+
+
         // GPS
         bool firstLocationDataHasBeenSet = false;
         bool targetLocationHasBeenSet = false;
@@ -556,47 +562,97 @@ namespace AeroUI
                         playBackData.Add(reader.ReadLine());
                     }
 
+                    playbackCSVHasBeenLoaded = true;
+
+                    numberOfElementsOfPlaybackData = playBackData.Count;
+
                     PlayBackSlider.Minimum = 1;
 
                     PlayBackSlider.Maximum = playBackData.Count;
+
+                    restartPlaybackElements();
                 }
             }
 
-            /*
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+        }
 
-            openFileDialog.InitialDirectory = @"../../Flights/";
-            openFileDialog.Filter = "csv files (*csv)|*.txt";
-            openFileDialog.DefaultExt = ".csv";
-            openFileDialog.Multiselect = false;
-            bool? dialogOK = openFileDialog.ShowDialog();
-
-            if(dialogOK == true)
+        private void btnPlayback_click(object sender, RoutedEventArgs e)
+        {
+            if(playbackCSVHasBeenLoaded)
             {
-                string filePath = openFileDialog.FileName;
+                flightIsPlayingBack = !flightIsPlayingBack;
 
-                Console.WriteLine("PLAYBACK FILE: " + filePath);
+                playbackButton.Content = flightIsPlayingBack ? "Pause" : "Play";
 
-                using (var reader = new StreamReader(filePath))
+                PlayBackSlider.IsEnabled = flightIsPlayingBack ? false : true;
+
+                searchFlightFileButton.IsEnabled = flightIsPlayingBack ? false : true;
+
+                if (flightIsPlayingBack)
                 {
-                    while (!reader.EndOfStream)
-                    {
-                        playBackData.Add(reader.ReadLine());
-                    }
+                    executePlaybackRoutine();
                 }
 
-                PlayBackSlider.Minimum = 1;
-                PlayBackSlider.Maximum = playBackData.Count;
             }
-            */
 
+        }
+
+        private async void executePlaybackRoutine()
+        {
+            for(int i = playbackCurrentIndex; i < numberOfElementsOfPlaybackData; i++)
+            {
+                if(flightIsPlayingBack)
+                {
+                    updatePlaybackElements(i);
+
+                    await Task.Delay(100);
+
+                    if(i == numberOfElementsOfPlaybackData - 1)
+                    {
+                        await Task.Delay(300);
+
+                        restartPlaybackElements();
+                    }
+
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+        }
+
+        private void updatePlaybackElements(int i)
+        {
+            PanelFlightData.Text = playBackData[i];
+
+            PlayBackSlider.Value = i + 1;
+
+        }
+
+        private void restartPlaybackElements()
+        {
+            playbackCurrentIndex = 0;
+
+            flightIsPlayingBack = false;
+
+            PlayBackSlider.Value = 1;
+
+            PlayBackSlider.IsEnabled = true;
+
+            playbackButton.Content = "Play";
+
+            searchFlightFileButton.IsEnabled = true;
         }
 
         private void showPlayBackData(object sender, RoutedEventArgs e)
         {
             if(playBackData.Count > 0)
             {
-                PanelFlightData.Text = playBackData[(int)PlayBackSlider.Value - 1];
+                playbackCurrentIndex = (int)PlayBackSlider.Value - 1;
+
+                PanelFlightData.Text = playBackData[playbackCurrentIndex];
             }
         }
 
