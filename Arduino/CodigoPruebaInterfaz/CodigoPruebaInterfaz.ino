@@ -1,8 +1,7 @@
 int x = 0;
 double y = 0.00001;
-double lat = 19.424184;
-double longi = -99.134937;
-
+double lat = 19.506398;
+double longi = -99.318077;
 // the setup routine runs once when you press reset:
 void setup() {
   // initialize  serial communication at 9600 bits per second:
