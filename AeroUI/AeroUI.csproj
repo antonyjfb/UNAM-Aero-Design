@@ -145,5 +145,16 @@
   <ItemGroup>
     <Resource Include="Assets\record.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\okCircle.png" />
+    <Resource Include="Assets\redCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\bad-location.png" />
+    <Resource Include="Assets\good-location.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

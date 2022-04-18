@@ -220,8 +220,22 @@ namespace AeroUI
 
             if(targetLocationHasBeenSet)
             {
-                lblDistanceToTarget.Content = "Distancia: " + log.getDistanceToTarget(targetLatitude, targetLongitude);
+                double distance = log.getDistanceToTarget(targetLatitude, targetLongitude);
+                lblDist.Content = distance;
                 drawLineFromAircraftToTarget();
+                string RouteImgDistance;
+                if (distance < 10)
+                {
+                    RouteImgDistance = "Assets/okCircle.png";
+
+                }
+                else
+                {
+                    RouteImgDistance = "Assets/redCircle.png";
+                }
+                Uri uri0 = new Uri(RouteImgDistance, UriKind.Relative);
+                ImageSource imgSource0 = new BitmapImage(uri0);
+                imgDistance.Source = imgSource0;
             }
 
             if (firstLocationDataHasBeenSet)
@@ -236,6 +250,19 @@ namespace AeroUI
             {
                 lblRecTime.Content = string.Format("{0:0.00}", log.Tiempo);
             }
+
+            //string RouteImgAltitude;
+            //if (log.Altura < 10)
+            //{
+            //    RouteImgAltitude = "Assets/okCircle.png";
+            //}
+            //else
+            //{
+            //    RouteImgAltitude = "Assets/redCircle.png";
+            //}
+            //Uri uri1 = new Uri(RouteImgAltitude, UriKind.Relative);
+            //ImageSource imgSource1 = new BitmapImage(uri1);
+            //imgDistance.Source = imgSource1;
         }
 
         private void jiggleMap()
@@ -283,6 +310,7 @@ namespace AeroUI
             lblLong.Visibility = Visibility.Hidden;
             lblSpeed.Visibility = Visibility.Hidden;
             lblAlt.Visibility = Visibility.Hidden;
+            //lblDist.Visibility = Visibility.Hidden;
         }
         private void MostrarLabel()
         {
@@ -456,10 +484,12 @@ namespace AeroUI
 
         private void startRecording(object sender, RoutedEventArgs e)
         {
+            string RouteImgRecord;
             if (ON)
             {
                 recordingIsAvaible = true;
                 ON = false;
+                RouteImgRecord = "Assets/stop.png";
             }
             else
             {
@@ -478,8 +508,11 @@ namespace AeroUI
 
                 numberOfFlight++;
                 ON = true;
+                RouteImgRecord = "Assets/record.png";
             }
-            
+            Uri uri2 = new Uri(RouteImgRecord, UriKind.Relative);
+            ImageSource imgSource2 = new BitmapImage(uri2);
+            imgRecord.Source = imgSource2;
         }
 
         private void BtnMinimizar_Click(object sender, RoutedEventArgs e)

@@ -187,7 +187,7 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
-        <!--#ENDREGION-->        
+        <!--#ENDREGION-->
         <!--#ENDREGION-->
     </Window.Resources>
     <!--ENDREGION-->
@@ -206,35 +206,59 @@
                 </Grid.Background>
 
                 <!--PANEL TAKE OFF-->
-                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0"  Width="735">
+                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Margin="65,40,0,0"  Width="1135" >
                     <!--REGION CONTENIDO-->
-                    <!--GroupBox para PRIMARY AIRCRAFT DATA-->
-                    <GroupBox Header="Primary Aircraft Data" Height="170" Margin="0,-10,421,0" Foreground="White" FontSize="20">
-                        <Grid>
-                            <Label x:Name="lbl_Lat" Content="Lat [Deg]:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="87" FontSize="15" Foreground="White"/>
-                            <Label x:Name="lbl_Long" Content="Long [Deg]:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="15"/>
-                            <Label x:Name="lbl_Speed" Content="Speed [ft/s]:" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" FontSize="15" Width="92" Foreground="White"/>
-                            <Label x:Name="lblLat" Content="Latitude" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" Width="76" Foreground="White" FontSize="15"/>
-                            <Label x:Name="lblLong" Content="Long" HorizontalAlignment="Left" Margin="102,40,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Width="76"/>
-                            <Label x:Name="lblSpeed" Content="Speed" HorizontalAlignment="Left" Margin="102,70,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" Width="76"/>
-                            <Label x:Name="lbl_Alt" Content="Altitude [ft]:" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15"/>
-                            <Label x:Name="lblAlt" Content="Alt" HorizontalAlignment="Left" Margin="183,40,0,0" VerticalAlignment="Top" Height="55" Width="109" FontSize="40" Foreground="White"/>
-                        </Grid>
-                    </GroupBox>
+                    <Grid x:Name="GridTakeOff"
+                          HorizontalAlignment="Left"
+                          Height="660"
+                          Width="1135"
+                          Margin="0,0,0,0"
+                          Background="#81c784">
+                        <!--REGION COLS & ROWS-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="66"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="66"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbl_Lat" Content="Lat [Deg]:" FontSize="20" Margin="0,13,0,0" Grid.Row="1" Width="102" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lbl_Long" Content="Long [Deg]:" FontSize="20" Margin="0,13,0,0" Grid.Row="2" Width="115"  VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lbl_Speed" Content="Speed [ft/s]:" FontSize="20" Margin="0,13,0,0" Grid.Row="3" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblLat" Content="Latitude" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lblLong" Content="Long" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lblSpeed" Content="Speed" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lbl_Alt" Content="Altitude [ft]:" FontSize="20" Margin="0,13,0,0" Grid.Row="4" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblAlt" Content="Alt" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lbl_Dist" Content="Distance: [ft]:" FontSize="20" Margin="0,13,0,0" Grid.Row="5" Width="125" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblDist" Content="distance" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <!--ENDREGION-->
 
-                    <Label x:Name="lblDistanceToTarget" Content="Distancia: " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,45,550,0" Foreground="Pink" FontSize="25"/>
-
-
-                    <Grid Width="{Binding ActualWidth, ElementName=PnMaps}" Height="{Binding ActualHeight, ElementName=PnMaps}">
-                        <!-- <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="47.620574,-122.34942" ZoomLevel="16"> -->
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="349,-232,-206,-274">
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="91,0,72,0" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="5" Grid.Row="1">
                             <m:Pushpin x:Name="aircraft_pin"/>
                             <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
                             <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
                         </m:Map>
-                    </Grid>
-                    <!--ENDREGION-->
+                        <Image x:Name="imgDistance" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="143,16,0,0" Grid.Row="5" VerticalAlignment="Top" Width="40" Grid.ColumnSpan="2" Source="Assets/redCircle.png" />
+                        <!--<Image  x:Name="imgAltitude" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40" Margin="143,13,0,0" Grid.Row="4" VerticalAlignment="Top" Source="Assets/redCircle.png"/>-->
 
+                    </Grid>
+
+                    <!--ENDREGION-->
                 </StackPanel>
                 <!--ENDREGION-->
 
@@ -317,7 +341,7 @@
                           Grid.Column="2"
                           Grid.Row="2"
                           FontSize="30" 
-                          Style="{DynamicResource TextBoxStyle}"/>
+                          Style="{DynamicResource TextBoxStyle}" Text="19.508636"/>
                         <!--ENDREGION-->
 
                         <!--REGION TEXTO LONGITUD-->
@@ -339,7 +363,7 @@
                             Grid.Column="4"
                             Grid.Row="2"
                             FontSize="30"
-                            Style="{DynamicResource TextBoxStyle}"/>
+                            Style="{DynamicResource TextBoxStyle}" Text="-99.316232"/>
                         <!--ENDREGION-->
 
                         <!--REGION BTN ESTABLECER OBJETIVO-->
@@ -402,9 +426,11 @@
                             Grid.Row="7"
                             Background="#ce93d8"
                             BorderBrush="#ce93d8"
+                            Foreground="White"
                             Cursor="Hand"
                             Width="170"                          
-                            HorizontalAlignment="Center"                    
+                            HorizontalAlignment="Center"  
+                            FontSize="20"
                             Grid.Column="2" Margin="30,50,74,145"
                             Click="BtnConexion_Click">
                             <TextBlock Text="Connect"
@@ -469,7 +495,7 @@
                                 Width="27" 
                                 Grid.ColumnSpan="2"
                                 Style="{DynamicResource BTNHEADERSTYLE}">
-                            <Image 
+                            <Image x:Name="imgRecord"
                                    Grid.Column="1"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
