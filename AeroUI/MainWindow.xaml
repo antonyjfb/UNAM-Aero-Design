@@ -201,7 +201,7 @@
             <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
                 <Grid.Background>
                     <ImageBrush x:Name="img_bg"
-                                ImageSource="Assets/Aero.png"
+                                ImageSource="ImgTakeOff.png"
                                 Stretch="Fill"/>
                 </Grid.Background>
 
@@ -212,8 +212,7 @@
                           HorizontalAlignment="Left"
                           Height="660"
                           Width="1135"
-                          Margin="0,0,0,0"
-                          Background="#81c784">
+                          Margin="0,0,0,0">
                         <!--REGION COLS & ROWS-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -236,24 +235,24 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label x:Name="lbl_Lat" Content="Lat [Deg]:" FontSize="20" Margin="0,13,0,0" Grid.Row="1" Width="102" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
-                        <Label x:Name="lbl_Long" Content="Long [Deg]:" FontSize="20" Margin="0,13,0,0" Grid.Row="2" Width="115"  VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
-                        <Label x:Name="lbl_Speed" Content="Speed [ft/s]:" FontSize="20" Margin="0,13,0,0" Grid.Row="3" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
-                        <Label x:Name="lblLat" Content="Latitude" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Foreground="Black" Width="110"/>
-                        <Label x:Name="lblLong" Content="Long" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Top" Foreground="Black" Width="110"/>
-                        <Label x:Name="lblSpeed" Content="Speed" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Foreground="Black" Width="110"/>
-                        <Label x:Name="lbl_Alt" Content="Altitude [ft]:" FontSize="20" Margin="0,13,0,0" Grid.Row="4" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
-                        <Label x:Name="lblAlt" Content="Alt" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Top" Foreground="Black" Width="110"/>
-                        <Label x:Name="lbl_Dist" Content="Distance: [ft]:" FontSize="20" Margin="0,13,0,0" Grid.Row="5" Width="125" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
-                        <Label x:Name="lblDist" Content="distance" FontSize="20" Margin="0,13,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lbl_Lat" Content="Lat [Deg]:" FontSize="20" Margin="0,10,10,0" Grid.Row="3" Width="102" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lbl_Long" Content="Long [Deg]:" FontSize="20" Margin="0,10,10,0" Grid.Row="4" Width="115"  VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lbl_Speed" Content="Speed [ft/s]:" FontSize="20" Margin="0,10,10,0" Grid.Row="5" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblLat" Content="Latitude" FontSize="20" Margin="10,10,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lblLong" Content="Long" FontSize="20" Margin="10,10,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lblSpeed" Content="Speed" FontSize="20" Margin="10,10,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lbl_Alt" Content="Altitude [ft]:" FontSize="20" Margin="0,10,0,0" Grid.Row="6" Width="115" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblAlt" Content="Alt" FontSize="20" Margin="10,10,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Top" Foreground="Black" Width="110"/>
+                        <Label x:Name="lbl_Dist" Content="Distance: [ft]:" FontSize="20" Margin="0,10,10,0" Grid.Row="7" Width="125" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black"/>
+                        <Label x:Name="lblDist" Content="distance" FontSize="20" Margin="0,10,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Top" Foreground="Black" Width="110"/>
                         <!--ENDREGION-->
 
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="91,0,72,0" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="5" Grid.Row="1">
+                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="127,0,36,10" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="5" Grid.Row="2">
                             <m:Pushpin x:Name="aircraft_pin"/>
                             <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
                             <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
                         </m:Map>
-                        <Image x:Name="imgDistance" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="143,16,0,0" Grid.Row="5" VerticalAlignment="Top" Width="40" Grid.ColumnSpan="2" Source="Assets/redCircle.png" />
+                        <Image x:Name="imgDistance" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="140,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="40" Grid.ColumnSpan="2" Source="Assets/redCircle.png" />
                         <!--<Image  x:Name="imgAltitude" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40" Margin="143,13,0,0" Grid.Row="4" VerticalAlignment="Top" Source="Assets/redCircle.png"/>-->
 
                     </Grid>
@@ -287,8 +286,10 @@
                           HorizontalAlignment="Left"                        
                           Height="660"
                           Width="1135"
-                          Margin="0,0,0,0"
-                          Background="#81c784">
+                          Margin="0,0,0,0">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="ImgSettings.png"/>
+                        </Grid.Background>
                         <!--REGION COLS & ROWS-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20"/>
@@ -310,15 +311,7 @@
                         </Grid.RowDefinitions>
                         <!--ENDREGION-->
 
-                        <!--REGION TITULO-->
-                        <TextBlock Grid.Row="0"
-                          Grid.ColumnSpan="6"
-                          Text="Settings"
-                          Foreground="Black"
-                          FontSize="45"
-                          HorizontalAlignment="Center"
-                          VerticalAlignment="Center"/>
-                        <!--ENDREGION-->
+
 
                         <!--REGION PUERTO-->
                         <!--REGION TEXTO LATITUD-->
@@ -327,9 +320,10 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Grid.Column="1"
-                            Grid.Row="2"
+                            Grid.Row="3"
                             FontSize="35"
-                            Margin="0,0,10,0"/>
+                            Foreground="White"
+                            Margin="0,0,10,3"/>
                         <!--ENDREGION-->
 
                         <!--REGION TEXTBOX LATITUD-->
@@ -337,11 +331,12 @@
                           x:Name="LatitudeTextBox"
                           TextAlignment="Center"          
                           Background="Transparent"
-                          BorderBrush="#519657"
+                          BorderBrush="White"
                           Grid.Column="2"
                           Grid.Row="2"
                           FontSize="30" 
-                          Style="{DynamicResource TextBoxStyle}" Text="19.508636"/>
+                          Foreground="White"
+                          Style="{DynamicResource TextBoxStyle}" Text="19.508636" Margin="0,47,0,3" Grid.RowSpan="2"/>
                         <!--ENDREGION-->
 
                         <!--REGION TEXTO LONGITUD-->
@@ -349,9 +344,10 @@
                           HorizontalAlignment="Right"
                           VerticalAlignment="Center"
                           Grid.Column="3"
-                          Grid.Row="2"
+                          Grid.Row="3"
                           FontSize="35"
-                          Margin="0,0,10,0"/>
+                          Foreground="White"
+                          Margin="0,0,9,3"/>
                         <!--ENDREGION-->
 
                         <!--REGION TEXTBOX LONGITUD-->
@@ -359,11 +355,12 @@
                             x:Name="LongitudeTextBox"
                             TextAlignment="Center"          
                             Background="Transparent"
-                            BorderBrush="#519657"
+                            BorderBrush="White"
                             Grid.Column="4"
                             Grid.Row="2"
                             FontSize="30"
-                            Style="{DynamicResource TextBoxStyle}" Text="-99.316232"/>
+                            Foreground="White"
+                            Style="{DynamicResource TextBoxStyle}" Text="-99.316232" Margin="0,47,0,3" Grid.RowSpan="2"/>
                         <!--ENDREGION-->
 
                         <!--REGION BTN ESTABLECER OBJETIVO-->
@@ -375,7 +372,7 @@
                             Cursor="Hand"
                             Width="170"                         
                             HorizontalAlignment="Center"                       
-                            Grid.Column="2" Margin="194,10,184,0" Grid.ColumnSpan="2" Click="btnSetTarget_Click">
+                            Grid.Column="2" Margin="258,25,120,35" Grid.ColumnSpan="2" Click="btnSetTarget_Click" Grid.RowSpan="2">
                             <TextBlock Text="Set Target"
                             Foreground="White"
                             FontSize="25"/>
@@ -390,6 +387,7 @@
                             Grid.Column="1"
                             Grid.Row="6"
                             FontSize="35"
+                            Foreground="White"
                             Margin="0,0,10,0"/>
                         <!--ENDREGION-->
                         <!--REGION ComboBox PUERTO-->
@@ -407,8 +405,8 @@
                         <!--REGION BTN ESTABLECER OBJETIVO-->
                         <Button
                             x:Name="BtnBuscar"
-                            Background="#bbdefd"
-                            BorderBrush="#bbdefd"
+                            Background="#9e9e9e"
+                            BorderBrush="#FF98CF79"
                             Grid.Column="3"
                             Grid.Row="6"
                             Cursor="Hand"
@@ -424,8 +422,8 @@
                         <Button
                             x:Name="BtnConexion"
                             Grid.Row="7"
-                            Background="#ce93d8"
-                            BorderBrush="#ce93d8"
+                            Background="#9e9e9e"
+                            BorderBrush="#FF98CF79"
                             Foreground="White"
                             Cursor="Hand"
                             Width="170"                          

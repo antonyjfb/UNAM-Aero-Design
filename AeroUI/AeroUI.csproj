@@ -156,5 +156,17 @@
     <Resource Include="Assets\bad-location.png" />
     <Resource Include="Assets\good-location.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ImgSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImgSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ImgTakeOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImgTakeOff.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

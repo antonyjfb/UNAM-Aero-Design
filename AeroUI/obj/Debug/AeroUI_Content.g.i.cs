@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/bad-location.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/good-location.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("imgtakeoff.png")]
 
 
