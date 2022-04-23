@@ -251,18 +251,18 @@ namespace AeroUI
                 lblRecTime.Content = string.Format("{0:0.00}", log.Tiempo);
             }
 
-            //string RouteImgAltitude;
-            //if (log.Altura < 10)
-            //{
-            //    RouteImgAltitude = "Assets/okCircle.png";
-            //}
-            //else
-            //{
-            //    RouteImgAltitude = "Assets/redCircle.png";
-            //}
-            //Uri uri1 = new Uri(RouteImgAltitude, UriKind.Relative);
-            //ImageSource imgSource1 = new BitmapImage(uri1);
-            //imgDistance.Source = imgSource1;
+            string RouteImgAltitude;
+            if (log.Altura < 2)
+            {
+                RouteImgAltitude = "Assets/good-location.png";
+            }
+            else
+            {
+                RouteImgAltitude = "Assets/bad-location.png";
+            }
+            Uri uri1 = new Uri(RouteImgAltitude, UriKind.Relative);
+            ImageSource imgSource1 = new BitmapImage(uri1);
+            imgAltitude.Source = imgSource1;
         }
 
         private void jiggleMap()

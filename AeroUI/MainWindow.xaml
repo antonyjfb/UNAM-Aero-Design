@@ -253,7 +253,7 @@
                             <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
                         </m:Map>
                         <Image x:Name="imgDistance" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="140,10,0,0" Grid.Row="7" VerticalAlignment="Top" Width="40" Grid.ColumnSpan="2" Source="Assets/redCircle.png" />
-                        <!--<Image  x:Name="imgAltitude" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40" Margin="143,13,0,0" Grid.Row="4" VerticalAlignment="Top" Source="Assets/redCircle.png"/>-->
+                        <Image  x:Name="imgAltitude" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="40" Width="40" Margin="140,10,0,0" Grid.Row="6" VerticalAlignment="Top" Source="Assets/bad-location.png"/>
 
                     </Grid>
 
