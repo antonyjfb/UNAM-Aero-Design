@@ -74,6 +74,11 @@ namespace AeroUI
         Pushpin targetPin;
         LocationCollection aircraftLocationsCollection = new LocationCollection();
 
+        // Release
+        bool ReleaseHasBeenDone = false;
+        bool ReleaseAltitudeHasBeenRegistered = false;
+        double ReleaseAltitude = 0;
+
         //Programa principal
         public MainWindow()
         {
@@ -169,6 +174,20 @@ namespace AeroUI
                 Console.WriteLine("Latitud del centro: " + centerLocation.Latitude);
                 Console.WriteLine("Latitud del centro: " + centerLocation.Longitude);
 
+                // Indicar cuando se ha realizado la liberación
+
+                if(ReleaseHasBeenDone)
+                {
+                    log.Liberacion = 1;
+
+                    if(!ReleaseAltitudeHasBeenRegistered)
+                    {
+                        ReleaseAltitude = log.Altura;
+
+                        ReleaseAltitudeHasBeenRegistered = true;
+                    }
+                }
+
                 // Si se está grabando, se guardan los datos en logUAV
                 if (recordingIsAvaible)
                 {
@@ -216,7 +235,7 @@ namespace AeroUI
             lblLong.Content = log.Longitud;
             lblSpeed.Content = log.Velocidad;
             lblAlt.Content = log.Altura;
-            //Label de prueba para ver distancia con respecto al objetivo
+            lblReleaseAlt.Content = ReleaseHasBeenDone ? ReleaseAltitude : log.Altura;
 
             if(targetLocationHasBeenSet)
             {
@@ -689,6 +708,16 @@ namespace AeroUI
             }
         }
 
+        private void Release(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.R)
+            {
+                if(!ReleaseHasBeenDone)
+                {
+                    ReleaseHasBeenDone = true;
+                }
+            }
+        }
 
     }
 }
