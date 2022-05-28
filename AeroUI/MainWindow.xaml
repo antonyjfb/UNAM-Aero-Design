@@ -206,7 +206,7 @@
                 </Grid.Background>
 
                 <!--PANEL TAKE OFF-->
-                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Margin="65,40,0,0"  Width="1135" >
+                <StackPanel x:Name="PnTakeOff" HorizontalAlignment="Left" Margin="65,40,0,0"  Width="1135" Visibility="Hidden" >
                     <!--REGION CONTENIDO-->
                     <Grid x:Name="GridTakeOff"
                           HorizontalAlignment="Left"
@@ -260,20 +260,27 @@
                 <!--ENDREGION-->
 
                 <!--#PANEL Flight Data-->
-                <StackPanel x:Name="PnFlightData" HorizontalAlignment="Left" Height="600" Margin="65,0,0,0" Width="735" Visibility="Hidden">
-                    <TextBlock x:Name="PanelFlightData" Margin="250,130,50,50" Foreground="Azure" FontSize="15" Text="PANEL Flight Data" />
-                    <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Flight Data-->
+                <StackPanel x:Name="PnFlightData" HorizontalAlignment="Left" Margin="65,40,0,0" Width="1135">
+                    <Grid x:Name="GridFlightData"
+                          HorizontalAlignment="Left"                        
+                          Height="660"
+                          Width="1135"
+                          Margin="0,0,0,0">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Assets/ImgFlightData.png"/>
+                        </Grid.Background>
+                        <TextBlock x:Name="PanelFlightData" Margin="288,186,666,448" Foreground="Azure" FontSize="15" Text="PANEL Flight Data" />
+                        <!--COLOCAR LOS CONTROLES CORRESPONDIENTES AL PANEL Flight Data-->
 
 
-                    <Button x:Name="playbackButton" Content="Play" Width="100" Click="btnPlayback_click"/>
-                    <Button x:Name="searchFlightFileButton" Content="Search" Width="100" Click="searchFlightFile"/>
-                    <TextBox Grid.Row="1" Grid.Column="5" Text ="{Binding Value, ElementName = 
-								 PlayBackSlider, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="3" Width="300"/>
-                    <Slider Grid.Row="2" Grid.Column="5" Minimum ="1" Maximum="28" x:Name="PlayBackSlider"
+                        <Button x:Name="playbackButton" Content="Play" Width="100" Click="btnPlayback_click" Margin="232,334,803,292"/>
+                        <Button x:Name="searchFlightFileButton" Content="Search" Width="100" Click="searchFlightFile" Margin="66,272,969,358"/>
+                        <TextBox Text ="{Binding Value, ElementName = 
+								 PlayBackSlider, UpdateSourceTrigger=PropertyChanged}" Margin="100,334,935,276"/>
+                        <Slider Minimum ="1" Maximum="28" x:Name="PlayBackSlider"
 								HorizontalAlignment="Left" VerticalAlignment="Top"
-                                IsSnapToTickEnabled="True" TickFrequency="1" Width="200" Height="30" Grid.ColumnSpan="3" ValueChanged="showPlayBackData"/>
-
-
+                                IsSnapToTickEnabled="True" TickFrequency="1" Width="200" Height="30" ValueChanged="showPlayBackData" Margin="550,272,0,0"/>
+                    </Grid>
                 </StackPanel>
                 <!--ENDREGION-->
 
