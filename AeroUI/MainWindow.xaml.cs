@@ -231,9 +231,7 @@ namespace AeroUI
             //Cada vez que se agregue un tipo de visualización compleja Ej: Gráfica
             //se añadirá como una función Ej: ModificarGrafica(parametros)
             //Para obtener la información usar la sintaxis log.datoRequerido Ej: log.PosX devuelve la posición en X
-            lblLat.Content = log.Latitud;
-            lblLong.Content = log.Longitud;
-            lblSpeed.Content = log.Velocidad;
+
             lblAlt.Content = log.Altura;
             lblReleaseAlt.Content = ReleaseHasBeenDone ? ReleaseAltitude : log.Altura;
 
@@ -325,18 +323,17 @@ namespace AeroUI
 
         private void OcultarLabel()
         {
-            lblLat.Visibility = Visibility.Hidden;
-            lblLong.Visibility = Visibility.Hidden;
-            lblSpeed.Visibility = Visibility.Hidden;
+       
+  
             lblAlt.Visibility = Visibility.Hidden;
-            //lblDist.Visibility = Visibility.Hidden;
+            lblReleaseAlt.Visibility = Visibility.Hidden;
+            lblDist.Visibility = Visibility.Hidden;
         }
         private void MostrarLabel()
         {
-            lblLat.Visibility = Visibility.Visible;
-            lblLong.Visibility = Visibility.Visible;
-            lblSpeed.Visibility = Visibility.Visible;
             lblAlt.Visibility = Visibility.Visible;
+            lblReleaseAlt.Visibility = Visibility.Visible;
+            lblDist.Visibility = Visibility.Visible;
         }
         private void CerrarConexion()
         {
