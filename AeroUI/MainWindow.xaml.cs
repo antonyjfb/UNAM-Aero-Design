@@ -85,7 +85,6 @@ namespace AeroUI
             InitializeComponent();
             OcultarLabel();
             PnTakeOff.Visibility = Visibility.Hidden;
-            PnFlightData.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
             SearchPorts();
             device.NewDataPacketReceived += device_NewDataPacketReceived; //Declaracion evento que se ejecuta cada vez que se recibe un dato
@@ -323,8 +322,6 @@ namespace AeroUI
 
         private void OcultarLabel()
         {
-       
-  
             lblAlt.Visibility = Visibility.Hidden;
             lblReleaseAlt.Visibility = Visibility.Hidden;
             lblDist.Visibility = Visibility.Hidden;
@@ -473,22 +470,31 @@ namespace AeroUI
         private void LvTakeOff_Selected(object sender, RoutedEventArgs e)
         {
             PnTakeOff.Visibility = Visibility.Visible;
-            PnFlightData.Visibility = Visibility.Hidden;
             PnSettings.Visibility = Visibility.Hidden;
+            TxtBFlightData.Visibility = Visibility.Hidden;
+            Btnplayback.Visibility = Visibility.Hidden;
+            BtnsearchFlightFile.Visibility = Visibility.Hidden;
+            TxtBoxSlider.Visibility = Visibility.Hidden;
+            PlayBackSlider.Visibility = Visibility.Hidden;
+
+
         }
 
         private void LvFlightData_Selected(object sender, RoutedEventArgs e)
         {
-            PnFlightData.Visibility = Visibility.Visible;
-            PnTakeOff.Visibility = Visibility.Hidden;
+            PnTakeOff.Visibility = Visibility.Visible;
             PnSettings.Visibility = Visibility.Hidden;
+            TxtBFlightData.Visibility = Visibility.Visible;
+            Btnplayback.Visibility = Visibility.Visible;
+            BtnsearchFlightFile.Visibility = Visibility.Visible;
+            TxtBoxSlider.Visibility = Visibility.Visible;
+            PlayBackSlider.Visibility = Visibility.Visible;
         }
 
 
         private void LvSettings_Selected(object sender, RoutedEventArgs e)
         {
             PnSettings.Visibility = Visibility.Visible;
-            PnFlightData.Visibility = Visibility.Hidden;
             PnTakeOff.Visibility = Visibility.Hidden;
         }
 
@@ -631,11 +637,11 @@ namespace AeroUI
             {
                 flightIsPlayingBack = !flightIsPlayingBack;
 
-                playbackButton.Content = flightIsPlayingBack ? "Pause" : "Play";
+                Btnplayback.Content = flightIsPlayingBack ? "Pause" : "Play";
 
                 PlayBackSlider.IsEnabled = flightIsPlayingBack ? false : true;
 
-                searchFlightFileButton.IsEnabled = flightIsPlayingBack ? false : true;
+                BtnsearchFlightFile.IsEnabled = flightIsPlayingBack ? false : true;
 
                 if (flightIsPlayingBack)
                 {
@@ -674,7 +680,7 @@ namespace AeroUI
 
         private void updatePlaybackElements(int i)
         {
-            PanelFlightData.Text = playBackData[i];
+            TxtBFlightData.Text = playBackData[i];
 
             PlayBackSlider.Value = i + 1;
 
@@ -690,9 +696,9 @@ namespace AeroUI
 
             PlayBackSlider.IsEnabled = true;
 
-            playbackButton.Content = "Play";
+            Btnplayback.Content = "Play";
 
-            searchFlightFileButton.IsEnabled = true;
+            BtnsearchFlightFile.IsEnabled = true;
         }
 
         private void showPlayBackData(object sender, RoutedEventArgs e)
@@ -701,7 +707,7 @@ namespace AeroUI
             {
                 playbackCurrentIndex = (int)PlayBackSlider.Value - 1;
 
-                PanelFlightData.Text = playBackData[playbackCurrentIndex];
+                TxtBFlightData.Text = playBackData[playbackCurrentIndex];
             }
         }
 
