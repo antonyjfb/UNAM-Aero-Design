@@ -52,7 +52,7 @@ namespace AeroUI
         //private Thread threadUI;
 
         // Play back
-        private List<string> playBackData = new List<string>();
+        private List<DataLog> playBackData = new List<DataLog>();
 
         int playbackCurrentIndex = 0;
         int numberOfElementsOfPlaybackData = 0;
@@ -614,7 +614,10 @@ namespace AeroUI
                 {
                     while (!reader.EndOfStream)
                     {
-                        playBackData.Add(reader.ReadLine());
+
+                        DataLog log = new DataLog(reader.ReadLine());
+
+                        playBackData.Add(log);
                     }
 
                     playbackCSVHasBeenLoaded = true;
@@ -658,7 +661,7 @@ namespace AeroUI
             {
                 if(flightIsPlayingBack)
                 {
-                    updatePlaybackElements(i);
+                    // updatePlaybackElements(i);
 
                     await Task.Delay(100);
 
@@ -678,13 +681,14 @@ namespace AeroUI
 
         }
 
+        /*
         private void updatePlaybackElements(int i)
         {
             TxtBFlightData.Text = playBackData[i];
 
             PlayBackSlider.Value = i + 1;
 
-        }
+        }*/
 
         private void restartPlaybackElements()
         {
@@ -707,7 +711,7 @@ namespace AeroUI
             {
                 playbackCurrentIndex = (int)PlayBackSlider.Value - 1;
 
-                TxtBFlightData.Text = playBackData[playbackCurrentIndex];
+                //TxtBFlightData.Text = playBackData[playbackCurrentIndex];
             }
         }
 

@@ -66,7 +66,6 @@ namespace AeroUI
             }
         }
 
-
         public DataLog(UAV dataDevice)
         {
             tiempo = dataDevice.Tiempo;
@@ -85,6 +84,27 @@ namespace AeroUI
             liberacion = 0;
 
             // csv_line = dataDevice.CSV_Line;
+        }
+
+        public DataLog(string loadedData)
+        {
+            string[] arrayOfLoadedData = loadedData.Split(',');
+
+            Double.TryParse(arrayOfLoadedData[0], out tiempo);
+            Double.TryParse(arrayOfLoadedData[1], out velocidad);
+            Double.TryParse(arrayOfLoadedData[2], out latitud);
+            Double.TryParse(arrayOfLoadedData[3], out longitud);
+            Double.TryParse(arrayOfLoadedData[4], out distancia);
+            Double.TryParse(arrayOfLoadedData[5], out altura);
+            Double.TryParse(arrayOfLoadedData[6], out velocidadZ);
+            Double.TryParse(arrayOfLoadedData[7], out aceleracionX);
+            Double.TryParse(arrayOfLoadedData[8], out aceleracionY);
+            Double.TryParse(arrayOfLoadedData[9], out aceleracionZ);
+            Double.TryParse(arrayOfLoadedData[10], out roll);
+            Double.TryParse(arrayOfLoadedData[11], out pitch);
+            Double.TryParse(arrayOfLoadedData[12], out yaw);
+            Int32.TryParse(arrayOfLoadedData[7], out liberacion);
+  
         }
 
         public double getDistanceToTarget(double targetLatitude, double targetLongitude)
