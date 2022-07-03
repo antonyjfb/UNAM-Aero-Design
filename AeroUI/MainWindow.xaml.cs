@@ -30,6 +30,9 @@ namespace AeroUI
     {
         private UAV device = new UAV();
 
+        // When receiving data
+        bool dataIsBeingReceived = false;
+
         // Lista completa de los datos 
         private List<DataLog> logUAV = new List<DataLog>();
         private bool toogle = false;
@@ -204,11 +207,11 @@ namespace AeroUI
                 }
 
                 // GPS
-                aircraftLocation.Latitude = log.Latitud;
-                aircraftLocation.Longitude = log.Longitud;
+                // aircraftLocation.Latitude = log.Latitud;
+                // aircraftLocation.Longitude = log.Longitud;
 
-                Console.WriteLine("Latitude: " + aircraftLocation.Latitude);
-                Console.WriteLine("Longitude: " + aircraftLocation.Longitude);
+                // Console.WriteLine("Latitude: " + aircraftLocation.Latitude);
+                // Console.WriteLine("Longitude: " + aircraftLocation.Longitude);
 
                 //Línea que contiene toda la información recopilada por los sensores
                 Console.WriteLine(log.CSV_Line);
@@ -233,8 +236,9 @@ namespace AeroUI
 
             lblAlt.Content = log.Altura;
             lblReleaseAlt.Content = ReleaseHasBeenDone ? ReleaseAltitude : log.Altura;
+            lbl_Release_Alt.Content = ReleaseHasBeenDone ? "Released" : "Not Released";
 
-            if(targetLocationHasBeenSet)
+            if (targetLocationHasBeenSet)
             {
                 double distance = log.getDistanceToTarget(targetLatitude, targetLongitude);
                 lblDist.Content = distance;
@@ -257,7 +261,11 @@ namespace AeroUI
             if (firstLocationDataHasBeenSet)
             {
                 AeroMap.Center = centerLocation;
+
+                aircraftLocation.Latitude = log.Latitud;
+                aircraftLocation.Longitude = log.Longitud;
                 aircraft_pin.Location = aircraftLocation;
+
                 jiggleMap();
                 drawAircraftRoute();
             }
@@ -279,7 +287,9 @@ namespace AeroUI
             Uri uri1 = new Uri(RouteImgAltitude, UriKind.Relative);
             ImageSource imgSource1 = new BitmapImage(uri1);
             imgAltitude.Source = imgSource1;
+
         }
+
 
         private void jiggleMap()
         {
@@ -340,6 +350,8 @@ namespace AeroUI
                 //threadUI.Abort();
                 device.StopConnection();
                 //threadUI.Abort();
+
+                dataIsBeingReceived = false;
             }
             catch (Exception error)
             {
@@ -354,6 +366,8 @@ namespace AeroUI
                 string puerto = CmbPorts.SelectedItem.ToString();
                 device.OpenConnection(puerto);
                 device.BeginDataFlow();
+
+                dataIsBeingReceived = true;
 
                 //Funciones comentadas hasta nuevo aviso
 
@@ -595,40 +609,44 @@ namespace AeroUI
 
         private void searchFlightFile(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog()
+            if(!dataIsBeingReceived)
             {
-                Title = "Search and ppen the flight csv",
-                Filter = "csv files (*csv)|*.csv",
-                InitialDirectory = Directory.GetCurrentDirectory()
-            };
-
-            Console.WriteLine("CURRENT DIRECTORY: " + Directory.GetCurrentDirectory());
-
-            if(open.ShowDialog() == true)
-            {
-                string filePath = open.FileName;
-
-                Console.WriteLine("PLAYBACK FILE: " + filePath);
-
-                using (var reader = new StreamReader(filePath))
+                OpenFileDialog open = new OpenFileDialog()
                 {
-                    while (!reader.EndOfStream)
+                    Title = "Search and ppen the flight csv",
+                    Filter = "csv files (*csv)|*.csv",
+                    InitialDirectory = Directory.GetCurrentDirectory()
+                };
+
+                Console.WriteLine("CURRENT DIRECTORY: " + Directory.GetCurrentDirectory());
+
+                if (open.ShowDialog() == true)
+                {
+                    string filePath = open.FileName;
+
+                    Console.WriteLine("PLAYBACK FILE: " + filePath);
+
+                    using (var reader = new StreamReader(filePath))
                     {
+                        while (!reader.EndOfStream)
+                        {
 
-                        DataLog log = new DataLog(reader.ReadLine());
+                            DataLog log = new DataLog(reader.ReadLine());
 
-                        playBackData.Add(log);
+                            playBackData.Add(log);
+                        }
+
+                        playbackCSVHasBeenLoaded = true;
+
+                        numberOfElementsOfPlaybackData = playBackData.Count;
+
+                        PlayBackSlider.Minimum = 1;
+
+                        PlayBackSlider.Maximum = playBackData.Count;
+
+                        restartPlaybackElements();
+                        
                     }
-
-                    playbackCSVHasBeenLoaded = true;
-
-                    numberOfElementsOfPlaybackData = playBackData.Count;
-
-                    PlayBackSlider.Minimum = 1;
-
-                    PlayBackSlider.Maximum = playBackData.Count;
-
-                    restartPlaybackElements();
                 }
             }
 
@@ -636,7 +654,7 @@ namespace AeroUI
 
         private void btnPlayback_click(object sender, RoutedEventArgs e)
         {
-            if(playbackCSVHasBeenLoaded)
+            if(playbackCSVHasBeenLoaded && !dataIsBeingReceived)
             {
                 flightIsPlayingBack = !flightIsPlayingBack;
 
@@ -663,6 +681,21 @@ namespace AeroUI
                 {
                     // updatePlaybackElements(i);
 
+                    ReleaseHasBeenDone = playBackData[i].Liberacion == 1;
+
+                    actualizarValores(playBackData[i]);
+
+                    PlayBackSlider.Value = i + 1;
+
+                    // updatePlaybackElements(playBackData[i]);
+
+                    /* Application.Current.Dispatcher.Invoke(new Action(() =>
+                    {
+                        //Dentro de esta función se actualizan todos los elementos visuales que requieran de información de los sensores
+                        updatePlaybackElements(playBackData[i]);
+
+                    }), System.Windows.Threading.DispatcherPriority.Background, null);*/
+
                     await Task.Delay(100);
 
                     if(i == numberOfElementsOfPlaybackData - 1)
@@ -681,14 +714,15 @@ namespace AeroUI
 
         }
 
-        /*
-        private void updatePlaybackElements(int i)
+        private void updatePlaybackElements(DataLog log)
         {
-            TxtBFlightData.Text = playBackData[i];
+            Console.WriteLine("Altura: " + log.Altura);
 
-            PlayBackSlider.Value = i + 1;
+            lblAlt.Content = log.Altura;
 
-        }*/
+            TxtBFlightData.Text = log.Altura.ToString();
+
+        }
 
         private void restartPlaybackElements()
         {
@@ -703,6 +737,33 @@ namespace AeroUI
             Btnplayback.Content = "Play";
 
             BtnsearchFlightFile.IsEnabled = true;
+
+            // == == ==
+
+            ReleaseHasBeenDone = false;
+
+            // targetLocationHasBeenSet = false;
+
+            firstLocationDataHasBeenSet = true;
+
+            recordingIsAvaible = false;
+
+            // Setting first location
+
+            center_latitude = playBackData[0].Latitud;
+
+            center_longitude = playBackData[0].Longitud;
+
+            centerLocation.Latitude = center_latitude;
+
+            centerLocation.Longitude = center_longitude;
+
+            // Removing drawings from the map
+
+            aircraftLocationsCollection.Clear();
+
+            aircraftRoute.Locations = aircraftLocationsCollection;
+
         }
 
         private void showPlayBackData(object sender, RoutedEventArgs e)
@@ -711,7 +772,16 @@ namespace AeroUI
             {
                 playbackCurrentIndex = (int)PlayBackSlider.Value - 1;
 
-                //TxtBFlightData.Text = playBackData[playbackCurrentIndex];
+                ReleaseHasBeenDone = playBackData[playbackCurrentIndex].Liberacion == 1;
+
+                updatePlaybackElements(playBackData[playbackCurrentIndex]);
+
+                /*Application.Current.Dispatcher.Invoke(new Action(() =>
+                {
+                    //Dentro de esta función se actualizan todos los elementos visuales que requieran de información de los sensores
+                    actualizarValores(playBackData[playbackCurrentIndex]);
+
+                }));*/
             }
         }
 
