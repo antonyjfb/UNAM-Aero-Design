@@ -485,7 +485,6 @@ namespace AeroUI
         {
             PnTakeOff.Visibility = Visibility.Visible;
             PnSettings.Visibility = Visibility.Hidden;
-            TxtBFlightData.Visibility = Visibility.Hidden;
             Btnplayback.Visibility = Visibility.Hidden;
             BtnsearchFlightFile.Visibility = Visibility.Hidden;
             TxtBoxSlider.Visibility = Visibility.Hidden;
@@ -498,7 +497,6 @@ namespace AeroUI
         {
             PnTakeOff.Visibility = Visibility.Visible;
             PnSettings.Visibility = Visibility.Hidden;
-            TxtBFlightData.Visibility = Visibility.Visible;
             Btnplayback.Visibility = Visibility.Visible;
             BtnsearchFlightFile.Visibility = Visibility.Visible;
             TxtBoxSlider.Visibility = Visibility.Visible;
@@ -623,7 +621,7 @@ namespace AeroUI
                 if (open.ShowDialog() == true)
                 {
                     string filePath = open.FileName;
-
+                    MostrarLabel();
                     Console.WriteLine("PLAYBACK FILE: " + filePath);
 
                     using (var reader = new StreamReader(filePath))
@@ -679,22 +677,13 @@ namespace AeroUI
             {
                 if(flightIsPlayingBack)
                 {
-                    // updatePlaybackElements(i);
+                    
 
                     ReleaseHasBeenDone = playBackData[i].Liberacion == 1;
 
                     actualizarValores(playBackData[i]);
 
                     PlayBackSlider.Value = i + 1;
-
-                    // updatePlaybackElements(playBackData[i]);
-
-                    /* Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {
-                        //Dentro de esta función se actualizan todos los elementos visuales que requieran de información de los sensores
-                        updatePlaybackElements(playBackData[i]);
-
-                    }), System.Windows.Threading.DispatcherPriority.Background, null);*/
 
                     await Task.Delay(100);
 
@@ -714,15 +703,7 @@ namespace AeroUI
 
         }
 
-        private void updatePlaybackElements(DataLog log)
-        {
-            Console.WriteLine("Altura: " + log.Altura);
-
-            lblAlt.Content = log.Altura;
-
-            TxtBFlightData.Text = log.Altura.ToString();
-
-        }
+        
 
         private void restartPlaybackElements()
         {
@@ -773,8 +754,6 @@ namespace AeroUI
                 playbackCurrentIndex = (int)PlayBackSlider.Value - 1;
 
                 ReleaseHasBeenDone = playBackData[playbackCurrentIndex].Liberacion == 1;
-
-                updatePlaybackElements(playBackData[playbackCurrentIndex]);
 
                 /*Application.Current.Dispatcher.Invoke(new Action(() =>
                 {

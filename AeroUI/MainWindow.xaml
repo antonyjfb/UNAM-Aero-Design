@@ -253,19 +253,6 @@
                         </m:Map>
                         <Image x:Name="imgDistance" Grid.Column="2" HorizontalAlignment="Left" Height="46" Margin="83,59,0,0" Grid.Row="3" VerticalAlignment="Top" Width="52" Source="Assets/redCircle.png" RenderTransformOrigin="0.6,2.7" Grid.RowSpan="2" />
                         <Image  x:Name="imgAltitude" Grid.Column="2" HorizontalAlignment="Left" Height="56" Width="52" Margin="83,44,0,0" Grid.Row="2" VerticalAlignment="Top" Source="Assets/bad-location.png" RenderTransformOrigin="2.925,0.7" Grid.RowSpan="2"/>
-                        <TextBlock 
-                            x:Name="TxtBFlightData" 
-                            HorizontalAlignment="Left" 
-                            Margin="75,10,0,0" 
-                            Grid.Row="7" 
-                            TextWrapping="Wrap" 
-                            Text="Flight Data" 
-                            VerticalAlignment="Top" 
-                            RenderTransformOrigin="-0.474,-0.062" 
-                            Width="348" 
-                            FontSize="20" 
-                            Foreground="White" 
-                            Grid.ColumnSpan="3"/>
                         <Button 
                             x:Name="Btnplayback" 
                             Content="Play" 
