@@ -84,6 +84,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
         <!--#REGION FOCUSVISUAL-->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -125,8 +126,8 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#4caf50"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="#4caf50"/>
+                                <Setter Property="Background" TargetName="border" Value="#4fc3f7"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#4fc3f7"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="TRANSPARENT"/>
@@ -142,6 +143,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <!--#ENDREGION-->
         <!--REGION TEXTBOX STYLE -->
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
@@ -188,7 +190,46 @@
             </Style.Triggers>
         </Style>
         <!--#ENDREGION-->
+        <!--REGION BUTTON SET TARGET STYLE -->
+        <Style x:Key="btnSetTarget" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="15" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#4fc3f7"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#4fc3f7"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#519657"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF98CF79"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--#ENDREGION-->
+
     </Window.Resources>
     <!--ENDREGION-->
 
@@ -242,72 +283,149 @@
                         <Label x:Name="lbl_Dist" Content="Distance [ft]:" FontSize="35" Margin="0,59,75,0" Grid.Row="3" Width="245" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" FontFamily="DejaVu Sans" Grid.ColumnSpan="2" Height="56" Grid.RowSpan="2"/>
                         <Label x:Name="lblDist" Content="Dis" FontSize="35" Margin="73,59,0,0"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Top" Foreground="White" Width="140" Grid.ColumnSpan="2" FontFamily="DejaVu Sans" Grid.RowSpan="2" FontWeight="Bold"/>
                         <Label x:Name="lbl_Release_Alt" Content="Not Released" FontSize="35" Margin="0,10,131,0" Grid.Row="5" Width="239" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="White" FontFamily="DejaVu Sans" Grid.ColumnSpan="3" RenderTransformOrigin="0.509,1.549" IsEnabled="False"/>
-                        <Label x:Name="lblReleaseAlt" Content="ReleaseAlt" FontSize="35" Margin="1,10,0,0" HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Top" Foreground="White" Width="212" FontFamily="DejaVu Sans" Grid.ColumnSpan="2" FontWeight="Bold" Grid.Column="1"/>
+                        <Label x:Name="lblReleaseAlt" Content="ReleaseAlt" FontSize="35" Margin="33,10,0,0" HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Top" Foreground="White" Width="212" FontFamily="DejaVu Sans" Grid.ColumnSpan="2" FontWeight="Bold" Grid.Column="1"/>
 
                         <!--ENDREGION-->
 
-                        <m:Map x:Name="AeroMap" CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" Center="19.424184,-99.134937" ZoomLevel="15" Margin="153,0,10,10" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="5" Grid.Row="2">
-                            <m:Pushpin x:Name="aircraft_pin"/>
-                            <m:MapPolyline x:Name="lineFromAircraftToTarget" Stroke="Blue" StrokeThickness="5" Opacity="0.5"/>
-                            <m:MapPolyline x:Name="aircraftRoute" Stroke="Red" StrokeThickness="5" Opacity="1"/>
+                        <m:Map 
+                            x:Name="AeroMap" 
+                            CredentialsProvider="JpyHPv3EMy8zdDHzIjsU~oaIWmQVu7caHhijy3kIU9A~AowjN3M70-kT1QqfsQHYr6BxPtpb-ALgGv4wFt6Ro_v-sbFqyyiROVY0BGCgFJlH" 
+                            Center="19.424184,-99.134937" 
+                            ZoomLevel="15" 
+                            Margin="153,0,10,10"
+                            Grid.Column="2" 
+                            Grid.RowSpan="8" 
+                            Grid.ColumnSpan="5"
+                            Grid.Row="2">
+                            <m:Pushpin 
+                                x:Name="aircraft_pin"/>
+                            <m:MapPolyline 
+                                x:Name="lineFromAircraftToTarget" 
+                                Stroke="Blue" 
+                                StrokeThickness="5" 
+                                Opacity="0.5"/>
+                            <m:MapPolyline 
+                                x:Name="aircraftRoute" 
+                                Stroke="Red" 
+                                StrokeThickness="5" 
+                                Opacity="1"/>
                         </m:Map>
-                        <Image x:Name="imgDistance" Grid.Column="2" HorizontalAlignment="Left" Height="46" Margin="83,59,0,0" Grid.Row="3" VerticalAlignment="Top" Width="52" Source="Assets/redCircle.png" RenderTransformOrigin="0.6,2.7" Grid.RowSpan="2" />
-                        <Image  x:Name="imgAltitude" Grid.Column="2" HorizontalAlignment="Left" Height="56" Width="52" Margin="83,44,0,0" Grid.Row="2" VerticalAlignment="Top" Source="Assets/bad-location.png" RenderTransformOrigin="2.925,0.7" Grid.RowSpan="2"/>
-                        <Button 
-                            x:Name="Btnplayback" 
-                            Content="Play" 
-                            Click="btnPlayback_click" 
-                            Background="#519657"
-                            BorderBrush="#FF98CF79"
-                            Cursor="Hand"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Top" 
-                            Width="110" 
-                            Margin="25,16,27,0" 
-                            Grid.Row="8" 
-                            Height="40"
-                            FontSize="20"/>
-                        <Button
-                            x:Name="BtnsearchFlightFile"
-                            Content="Search" 
-                            Click="searchFlightFile"
-                            Background="#519657"
-                            BorderBrush="#FF98CF79"
-                            Grid.Column="1" 
-                            HorizontalAlignment="Left" 
-                            Margin="24,16,0,0" 
-                            Grid.Row="8" 
-                            VerticalAlignment="Top" 
-                            Width="110" 
-                            Height="40"
-                            FontSize="20"/>
-                        <TextBox
-                            x:Name="TxtBoxSlider"
-                            Text ="{Binding Value, ElementName = 
-								 PlayBackSlider, UpdateSourceTrigger=PropertyChanged}"
+                        <Image 
+                            x:Name="imgDistance" 
                             Grid.Column="2" 
                             HorizontalAlignment="Left" 
                             Height="46" 
-                            Margin="10,10,0,0" 
-                            Grid.Row="8" 
-                            TextWrapping="Wrap"                            
+                            Margin="83,59,0,0" 
+                            Grid.Row="3" 
                             VerticalAlignment="Top" 
-                            Width="138"/>
-                        <Slider 
-                            x:Name="PlayBackSlider"
-                            Minimum ="1" Maximum="28"
-                            IsSnapToTickEnabled="True" 
-                            TickFrequency="1" 
+                            Width="52" 
+                            Source="Assets/redCircle.png" 
+                            RenderTransformOrigin="0.6,2.7" 
+                            Grid.RowSpan="2" />
+                        <Image 
+                            x:Name="imgAltitude" 
+                            Grid.Column="2" 
                             HorizontalAlignment="Left" 
-                            Margin="156,10,0,0"
-                            Width="200" 
-                            Height="30"
-                            Grid.Row="9" 
+                            Height="56" 
+                            Width="52" 
+                            Margin="83,44,0,0" 
+                            Grid.Row="2" 
                             VerticalAlignment="Top" 
-                            Grid.ColumnSpan="3"
-                            ValueChanged="showPlayBackData" />
+                            Source="Assets/bad-location.png" 
+                            RenderTransformOrigin="2.925,0.7" 
+                            Grid.RowSpan="2"/>
 
-
+                        <GroupBox 
+                            x:Name="GBoxPlayBack"
+                            Header="Play Back"
+                            Foreground="Aquamarine"
+                            FontSize="20"
+                            HorizontalAlignment="Left" 
+                            Height="205" Margin="25,49,0,0" 
+                            Grid.Row="6" 
+                            Grid.RowSpan="4" 
+                            VerticalAlignment="Top" 
+                            Width="435" Grid.ColumnSpan="3">
+                            <Grid>
+                                <Label 
+                                    Content="File path:" 
+                                    FontSize="20"
+                                    Foreground="White"
+                                    HorizontalAlignment="Left" 
+                                    Margin="19,10,0,0" 
+                                    VerticalAlignment="Top"/>
+                                <TextBox 
+                                    x:Name="TxtBoxFilePath"
+                                    TextAlignment="Center"
+                                    Background="Transparent"
+                                    BorderBrush="White"
+                                    Foreground="White"
+                                    FontSize="15"
+                                    HorizontalAlignment="Left" 
+                                    Height="40" 
+                                    Margin="119,10,0,0" 
+                                    TextWrapping="Wrap" 
+                                    VerticalAlignment="Top" 
+                                    Width="166"
+                                    Style="{DynamicResource TextBoxStyle}"/>
+                                <Button
+                                    x:Name="BtnsearchFlightFile"
+                                    Content="Search" 
+                                    Click="searchFlightFile"
+                                    Background="#519657"
+                                    BorderBrush="#FF98CF79" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="303,9,0,0" 
+                                    VerticalAlignment="Top" 
+                                    Width="110" 
+                                    Height="40"
+                                    FontSize="20"
+                                    Cursor="Hand"
+                                    Style="{DynamicResource btnSetTarget}" RenderTransformOrigin="0.427,0.4"/>
+                                <Label 
+                                    Content="Time:" 
+                                    FontSize="20"
+                                    Foreground="White"
+                                    HorizontalAlignment="Left" 
+                                    Margin="151,52,0,0" 
+                                    VerticalAlignment="Top"/>
+                                <Label 
+                                    x:Name="lbTime"
+                                    Content=" 0 [s]" 
+                                    FontSize="20"
+                                    Foreground="White" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="208,52,0,0" 
+                                    VerticalAlignment="Top"/>
+                                <Slider 
+                                    x:Name="PlayBackSlider"
+                                    Minimum ="1" 
+                                    Maximum="28"
+                                    IsSnapToTickEnabled="True" 
+                                    TickFrequency="1" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="108,89,0,0"
+                                    Width="200" 
+                                    Height="30" 
+                                    VerticalAlignment="Top"
+                                    ValueChanged="showPlayBackData" 
+                                    Cursor="Hand"/>
+                                <Button 
+                                    x:Name="Btnplayback" 
+                                    Content="Play" 
+                                    Click="btnPlayback_click" 
+                                    Background="#519657"
+                                    BorderBrush="#FF98CF79"
+                                    Cursor="Hand"
+                                    HorizontalAlignment="Center" 
+                                    VerticalAlignment="Top" 
+                                    Width="110" 
+                                    Margin="151,119,162,0" 
+                                    Height="40"
+                                    FontSize="20"
+                                    Style="{DynamicResource btnSetTarget}"/>
+                            </Grid>
+                        </GroupBox>
                     </Grid>
 
                     <!--ENDREGION-->
@@ -389,7 +507,10 @@
                           Grid.Row="2"
                           FontSize="30" 
                           Foreground="White"
-                          Style="{DynamicResource TextBoxStyle}" Text="19.508636" Margin="0,47,0,3" Grid.RowSpan="2"/>
+                          Style="{DynamicResource TextBoxStyle}" 
+                          Text="19.508636" 
+                          Margin="0,47,0,3" 
+                          Grid.RowSpan="2"/>
                         <!--ENDREGION-->
 
                         <!--REGION TEXTO LONGITUD-->
@@ -413,7 +534,10 @@
                             Grid.Row="2"
                             FontSize="30"
                             Foreground="White"
-                            Style="{DynamicResource TextBoxStyle}" Text="-99.316232" Margin="0,47,0,3" Grid.RowSpan="2"/>
+                            Style="{DynamicResource TextBoxStyle}" 
+                            Text="-99.316232" 
+                            Margin="0,47,0,3" 
+                            Grid.RowSpan="2"/>
                         <!--ENDREGION-->
 
                         <!--REGION BTN ESTABLECER OBJETIVO-->
@@ -425,7 +549,7 @@
                             Cursor="Hand"
                             Width="170"                         
                             HorizontalAlignment="Center"                       
-                            Grid.Column="2" Margin="258,25,120,35" Grid.ColumnSpan="2" Click="btnSetTarget_Click" Grid.RowSpan="2">
+                            Grid.Column="2" Margin="258,25,120,35" Grid.ColumnSpan="2" Click="btnSetTarget_Click" Grid.RowSpan="2" Style="{DynamicResource btnSetTarget}">
                             <TextBlock Text="Set Target"
                             Foreground="White"
                             FontSize="25"/>
@@ -464,7 +588,9 @@
                             Grid.Row="6"
                             Cursor="Hand"
                             Width="140"
-                            Margin="-100,5,5,255" Grid.RowSpan="2" Click="BtnBuscar_Click">
+                            Margin="-100,5,5,255" Grid.RowSpan="2" 
+                            Click="BtnBuscar_Click"
+                            Style="{DynamicResource btnSetTarget}">
                             <TextBlock Text="Search"
                               Foreground="White"
                               FontSize="25"/>
@@ -483,7 +609,8 @@
                             HorizontalAlignment="Center"  
                             FontSize="20"
                             Grid.Column="2" Margin="30,50,74,145"
-                            Click="BtnConexion_Click">
+                            Click="BtnConexion_Click"
+                            Style="{DynamicResource btnSetTarget}">
                             <TextBlock Text="Connect"
                               Foreground="White"
                               FontSize="25"/>
@@ -676,7 +803,7 @@
                         <!--    Take Off    -->
                         <ListViewItem x:Name="LvTakeOff" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvTakeOff_Selected"
-                                      >
+                                      Cursor="Hand">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
@@ -700,7 +827,7 @@
                         <!-- Flight Data-->
                         <ListViewItem x:Name="LvFlightData" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvFlightData_Selected"
-                                      >
+                                      Cursor="Hand">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
@@ -724,7 +851,7 @@
                         <!--Settings-->
                         <ListViewItem x:Name="LvSettings" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvSettings_Selected"
-                                      >
+                                      Cursor="Hand">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
@@ -748,7 +875,7 @@
                         <!--Exit-->
                         <ListViewItem x:Name="LvSettings1" HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="LvSettings1_Selected"
-                                      >
+                                      Cursor="Hand">
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 

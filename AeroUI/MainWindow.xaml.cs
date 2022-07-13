@@ -484,11 +484,8 @@ namespace AeroUI
         private void LvTakeOff_Selected(object sender, RoutedEventArgs e)
         {
             PnTakeOff.Visibility = Visibility.Visible;
-            PnSettings.Visibility = Visibility.Hidden;
-            Btnplayback.Visibility = Visibility.Hidden;
-            BtnsearchFlightFile.Visibility = Visibility.Hidden;
-            TxtBoxSlider.Visibility = Visibility.Hidden;
-            PlayBackSlider.Visibility = Visibility.Hidden;
+            PnSettings.Visibility = Visibility.Hidden;        
+            GBoxPlayBack.Visibility = Visibility.Hidden;
 
 
         }
@@ -497,10 +494,7 @@ namespace AeroUI
         {
             PnTakeOff.Visibility = Visibility.Visible;
             PnSettings.Visibility = Visibility.Hidden;
-            Btnplayback.Visibility = Visibility.Visible;
-            BtnsearchFlightFile.Visibility = Visibility.Visible;
-            TxtBoxSlider.Visibility = Visibility.Visible;
-            PlayBackSlider.Visibility = Visibility.Visible;
+            GBoxPlayBack.Visibility = Visibility.Visible;
         }
 
 
@@ -611,7 +605,7 @@ namespace AeroUI
             {
                 OpenFileDialog open = new OpenFileDialog()
                 {
-                    Title = "Search and ppen the flight csv",
+                    Title = "Search and open the flight csv",
                     Filter = "csv files (*csv)|*.csv",
                     InitialDirectory = Directory.GetCurrentDirectory()
                 };
@@ -621,9 +615,10 @@ namespace AeroUI
                 if (open.ShowDialog() == true)
                 {
                     string filePath = open.FileName;
+                    TxtBoxFilePath.Text = filePath;
                     MostrarLabel();
-                    Console.WriteLine("PLAYBACK FILE: " + filePath);
-
+                    Console.WriteLine("PLAYBACK FILE: " + filePath);    
+                    
                     using (var reader = new StreamReader(filePath))
                     {
                         while (!reader.EndOfStream)
