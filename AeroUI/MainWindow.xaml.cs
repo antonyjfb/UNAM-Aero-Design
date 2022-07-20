@@ -207,6 +207,12 @@ namespace AeroUI
                     logUAV.Add(log);
                 }
 
+                if(targetLocationHasBeenSet)
+                {
+                    log.LatitudObjetivo = targetLatitude;
+                    log.LongitudObjetivo = targetLongitude;
+                }
+
                 // GPS
                 // aircraftLocation.Latitude = log.Latitud;
                 // aircraftLocation.Longitude = log.Longitud;
@@ -241,7 +247,7 @@ namespace AeroUI
 
             if (targetLocationHasBeenSet)
             {
-                double distance = log.getDistanceToTarget(targetLatitude, targetLongitude);
+                double distance = log.getDistanceToTarget();
                 lblDist.Content = distance;
                 drawLineFromAircraftToTarget();
                 string RouteImgDistance;
@@ -583,17 +589,7 @@ namespace AeroUI
 
             if (targetLocationIsValid)
             {
-                if (AeroMap.Children.Contains(targetPin))
-                {
-                    Console.WriteLine("== El mapa ya tiene un pin para el objetivo, que se procede a eliminar para colocar uno nuevo ==");
-                    AeroMap.Children.Remove(targetPin);
-                }
-
-                targetLocation = new Location(targetLatitude, targetLongitude);
-                targetPin = new Pushpin();
-                targetPin.Location = targetLocation;
-                AeroMap.Children.Add(targetPin);
-                targetLocationHasBeenSet = true;
+                setTargetPin();
 
                 MessageBox.Show("Target's location has been saved", "Location saved", MessageBoxButton.OK);
             }
@@ -604,6 +600,21 @@ namespace AeroUI
                 MessageBox.Show("Target's location cannot be saved", "Unable to save", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
+        }
+
+        private void setTargetPin()
+        {
+            if (AeroMap.Children.Contains(targetPin))
+            {
+                Console.WriteLine("== El mapa ya tiene un pin para el objetivo, que se procede a eliminar para colocar uno nuevo ==");
+                AeroMap.Children.Remove(targetPin);
+            }
+
+            targetLocation = new Location(targetLatitude, targetLongitude);
+            targetPin = new Pushpin();
+            targetPin.Location = targetLocation;
+            AeroMap.Children.Add(targetPin);
+            targetLocationHasBeenSet = true;
         }
 
         private void searchFlightFile(object sender, RoutedEventArgs e)
@@ -696,6 +707,12 @@ namespace AeroUI
                     {
                         ReleaseAltitudeHasBeenRegistered = false;
                     }
+
+                    targetLatitude = playBackData[i].LatitudObjetivo;
+
+                    targetLongitude = playBackData[i].LongitudObjetivo;
+
+                    setTargetPin();
 
                     actualizarValores(playBackData[i]);
 

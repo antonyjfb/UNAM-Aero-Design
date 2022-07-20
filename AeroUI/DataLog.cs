@@ -5,6 +5,7 @@ namespace AeroUI
     public class DataLog
     {
         private double latitud, longitud, velocidad, velocidadZ, altura, roll, pitch, yaw, distancia, tiempo, aceleracionX, aceleracionY, aceleracionZ; //Debe tener las mismas variables que UAV
+        private double latitudObjetivo, longitudObjetivo;
         private int liberacion;
         private string csv_line;
 
@@ -38,6 +39,12 @@ namespace AeroUI
         public int Liberacion
         { get { return liberacion; } set { liberacion = value; } }
 
+        public double LatitudObjetivo
+        { get { return latitudObjetivo; } set { latitudObjetivo = value; } }
+
+        public double LongitudObjetivo
+        { get { return longitudObjetivo; } set { longitudObjetivo = value; } }
+
         public string CSV_Line
         {
             get
@@ -57,7 +64,9 @@ namespace AeroUI
                     roll.ToString(),
                     pitch.ToString(),
                     yaw.ToString(),
-                    liberacion.ToString()
+                    liberacion.ToString(),
+                    latitudObjetivo.ToString(),
+                    longitudObjetivo.ToString()
                 };
 
                 csv_line = string.Join(",", parameters);
@@ -82,6 +91,8 @@ namespace AeroUI
             pitch = dataDevice.Pitch;
             yaw = dataDevice.Yaw;
             liberacion = 0;
+            latitudObjetivo = 0;
+            longitudObjetivo = 0;
 
             // csv_line = dataDevice.CSV_Line;
         }
@@ -104,14 +115,18 @@ namespace AeroUI
             Double.TryParse(arrayOfLoadedData[11], out pitch);
             Double.TryParse(arrayOfLoadedData[12], out yaw);
             Int32.TryParse(arrayOfLoadedData[13], out liberacion);
+            Double.TryParse(arrayOfLoadedData[14], out latitudObjetivo);
+            Double.TryParse(arrayOfLoadedData[15], out longitudObjetivo);
   
         }
 
-        public double getDistanceToTarget(double targetLatitude, double targetLongitude)
+        public double getDistanceToTarget()
         {
             double distance = -1;
             double aircraftLatitude = this.latitud;
-            double aircraftLongitude = this.Longitud;
+            double aircraftLongitude = this.longitud;
+            double targetLatitude = this.latitudObjetivo;
+            double targetLongitude = this.longitudObjetivo;
             bool aircraftLocationIsValid = aircraftLatitude != 0 && aircraftLongitude != 0;
 
             if(aircraftLocationIsValid)
