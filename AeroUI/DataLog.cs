@@ -103,7 +103,7 @@ namespace AeroUI
             Double.TryParse(arrayOfLoadedData[10], out roll);
             Double.TryParse(arrayOfLoadedData[11], out pitch);
             Double.TryParse(arrayOfLoadedData[12], out yaw);
-            Int32.TryParse(arrayOfLoadedData[7], out liberacion);
+            Int32.TryParse(arrayOfLoadedData[13], out liberacion);
   
         }
 

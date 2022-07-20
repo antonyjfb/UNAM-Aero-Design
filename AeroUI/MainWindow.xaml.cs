@@ -95,6 +95,7 @@ namespace AeroUI
             //RealTimeUI_Setup();
             setLastNumberOfFlight();
             AeroMap.Mode = new AerialMode();
+            PlayBackSlider.IsEnabled = false;
 
         }
         private void setLastNumberOfFlight()
@@ -284,6 +285,12 @@ namespace AeroUI
             {
                 RouteImgAltitude = "Assets/bad-location.png";
             }
+
+            if(!dataIsBeingReceived)
+            {
+                lbTime.Content = log.Tiempo + " [s]";
+            }
+
             Uri uri1 = new Uri(RouteImgAltitude, UriKind.Relative);
             ImageSource imgSource1 = new BitmapImage(uri1);
             imgAltitude.Source = imgSource1;
@@ -615,7 +622,8 @@ namespace AeroUI
                 if (open.ShowDialog() == true)
                 {
                     string filePath = open.FileName;
-                    TxtBoxFilePath.Text = filePath;
+                    string fileName = System.IO.Path.GetFileName(open.FileName);
+                    TxtBoxFilePath.Text = fileName;
                     MostrarLabel();
                     Console.WriteLine("PLAYBACK FILE: " + filePath);    
                     
@@ -653,7 +661,7 @@ namespace AeroUI
 
                 Btnplayback.Content = flightIsPlayingBack ? "Pause" : "Play";
 
-                PlayBackSlider.IsEnabled = flightIsPlayingBack ? false : true;
+                // PlayBackSlider.IsEnabled = flightIsPlayingBack ? false : true;
 
                 BtnsearchFlightFile.IsEnabled = flightIsPlayingBack ? false : true;
 
@@ -671,10 +679,23 @@ namespace AeroUI
             for(int i = playbackCurrentIndex; i < numberOfElementsOfPlaybackData; i++)
             {
                 if(flightIsPlayingBack)
-                {
-                    
-
+                { 
                     ReleaseHasBeenDone = playBackData[i].Liberacion == 1;
+
+                    if (ReleaseHasBeenDone)
+                    {
+
+                        if (!ReleaseAltitudeHasBeenRegistered)
+                        {
+                            ReleaseAltitude = playBackData[i].Altura;
+
+                            ReleaseAltitudeHasBeenRegistered = true;
+                        }
+                    }
+                    else
+                    {
+                        ReleaseAltitudeHasBeenRegistered = false;
+                    }
 
                     actualizarValores(playBackData[i]);
 
@@ -714,9 +735,15 @@ namespace AeroUI
 
             BtnsearchFlightFile.IsEnabled = true;
 
+            // === === ===
+
+            lbTime.Content = "0 [s]";
+
             // == == ==
 
             ReleaseHasBeenDone = false;
+
+            ReleaseAltitudeHasBeenRegistered = false;
 
             // targetLocationHasBeenSet = false;
 
